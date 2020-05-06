@@ -1,0 +1,95 @@
+.vNav-container {
+  height: 100vh;
+  width: 90px;
+  position: fixed;
+  z-index: 1;
+  background-color: #1e1e30;
+  overflow-x: hidden;
+  transition: 0.3s;
+}
+.logo {
+  color: white;
+  font-size: 1.1em;
+  font-family: "Poppins", sans-serif;
+  padding-left: 8px;
+  margin-top: 4px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.icon {
+  color: white;
+  margin-left: 15px;
+}
+.icon:hover {
+  cursor: pointer;
+  color: #8a8a8a;
+}
+@media (min-width: 35.1em) {
+  .vNav-container {
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+  .link {
+    text-decoration: none;
+  }
+  .icon {
+    margin-bottom: 29px;
+  }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #5584b1;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px 0;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -50px;
+  }
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+}
+@media only screen and (max-width: 35em) {
+  .vNav-container {
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .logo {
+    display: hidden;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+  }
+  .icon-main {
+    display: inline;
+  }
+  .link {
+    display: inline;
+  }
+  .tooltip {
+    display: inline;
+  }
+  .tooltip-text,
+  .link {
+    font-size: 0;
+  }
+  .icon {
+    padding-top: 10px;
+    font-size: 35px;
+  }
+  .link-container {
+    text-align: center;
+  }
+}
