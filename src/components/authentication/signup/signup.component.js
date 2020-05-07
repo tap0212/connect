@@ -8,14 +8,16 @@ function Signup() {
             <VNav/>
             <div className="signup-container">
            <div className="signup-box">
-           <div className="tabs">
-                <span className="button">
-                <Link to='/login'>Login</Link>
-                </span>
-                <span className="button">
-                <Link to='/login'>Login</Link>
-                </span>
+            <div className="tab">
+                <Link to='/login' className="link1">Login</Link>
+                <Link to='/signup' className="link2">Signup</Link>
             </div>
+            <form>
+                <div>
+                    <label htmlFor="name">Name</label>
+                    <input type="text" placeholder="Name"/>
+                </div>
+            </form>
            </div>
         </div>
         </div>
