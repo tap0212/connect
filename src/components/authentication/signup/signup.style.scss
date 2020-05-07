@@ -9,33 +9,51 @@ $f1: 'Poppins', sans-serif;
 
 .signup-container{
     flex: 1;
-    margin-left: 100px;
-    border: 1px solid red ;
     overflow: hidden;
+    margin-left: 100px;
 
 }
 
 .signup-box{
-    width: 80ch;
-    margin-top: 25vh;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-    position: absolute;
-    z-index: 2;
+    width: 75%;
+    margin-top: 20%;
+    margin-left: 10ch;
+    background: #F0ECFF;
+    box-shadow:  41px 41px 82px #F0ECFF, 
+             -41px -41px 82px #F0ECFF; 
 }
 .connect-container{
-    position: absolute;
-    overflow: hidden;
-    border: 1px solid red ;
-    z-index: -1;
+   overflow: hidden;
 }
 .connect{
-    border: 1px solid red ;
-    width: 120%;
+    padding-right: 0;
+    margin-left: 0;
+    width: 100%;
 
 }
+.avatar-container{
+    text-align: center;
+}
+
+.avatar{
+    width: 30%;
+    padding-top: 0;
+    margin-top: -35%;
+    margin-bottom: -40%;
+}
+
+@media only screen   
+and (min-device-width : 768px)   
+and (max-device-width : 1024px)   {
+    .avatar{
+        height: 50vh;
+    }
+    .signup-box{
+        margin-top: 40%;
+    }
+}
+
+
 
 .tab{
     height: 5vh;
@@ -60,33 +78,16 @@ $f1: 'Poppins', sans-serif;
     padding-left: 15%;
 }
 
-.avatar-container{
-    margin-top: 2%;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    text-align: center;
-}
-
-.avatar{
-    width: 50%;
-}
-
-.form{
-
-    border: 1px solid red ;
-    margin-top: 0%;
-}
-
 
 .input{
-    background-color: black;
+    background-color: $dark;
     border-radius: 7px;
     border: 0px;
     width: 70%;
     margin-left: 5%;
     margin-top: 5%;
     padding: 2%;
-    color:black !important;
+    color:white !important;
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
 }
@@ -94,11 +95,11 @@ $f1: 'Poppins', sans-serif;
 .input:focus {
     outline: none !important;
     border: 2.5px solid white;
-    box-shadow: 0 0 10px #719ECE;
+    box-shadow: 0 0 10px $blue-accent;
 }
 .input::placeholder{
     font-family: 'Work Sans', sans-serif;
-    color: black;
+    color:white;
     opacity: 0.8;
     font-size: 1.3em;
 }
@@ -112,37 +113,48 @@ $f1: 'Poppins', sans-serif;
     font-weight: 100;
     color: white;
     border-radius: 5px;
+    background-color: $blue-accent;
     border: 1px solid black;
     padding: 1.5%;
     margin-left: 5%;
-    margin-top: 5%;
     cursor: pointer;
 }
 
 .button:hover, .button:active{
-    color: black;
-    background-color:red;
+    color: white;
+    background-color:$dark;
 }
 
 
-// @media only screen and (max-width: 600px) {
-//     .signup-container{
-//         margin-left: 0;
-//     }
-//     .home-content-container{
-//         margin-left: 20px;
-//     }
-//     .signup-box{
-//         height: 80vh;
-//         margin-top: 10vh;
-//         margin-left: 10%;
-//         margin-right: 10%;
-//         width: 80%;
-//     }
+@media only screen   
+    and (min-device-width : 360px)   
+    and (max-device-width : 640px)   {
+    .signup-container{
+        margin-left: 0;
+        position: fixed;
+        overflow: hidden;
+        padding-bottom: 0;
+    }
+    .signup-box{
+        height: 58vh;
+        margin-top: 7%;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+        padding-bottom: 0;
+    }
 
-//     .link2, .link1{
-//         font-size: 1.4em;
-//     }
+    .link2, .link1{
+        font-size: 1.4em;
+    }
+    .avatar{
+        height: 46vh;
+    }
+    .connect-container{
+        width: 99%;
+    }
+    .connect{
+        height: 40%;
+    }
     
-    
-// }
+}

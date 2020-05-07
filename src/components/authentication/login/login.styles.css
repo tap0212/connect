@@ -1,12 +1,13 @@
-.signup-container {
+.login-container {
   flex: 1;
   overflow: hidden;
   margin-left: 100px;
 }
-.signup-box {
+.login-box {
   width: 75%;
   margin-top: 20%;
   margin-left: 10ch;
+  border-radius: 50px;
   background: #f0ecff;
   box-shadow: 41px 41px 82px #f0ecff, -41px -41px 82px #f0ecff;
 }
@@ -31,7 +32,7 @@
   .avatar {
     height: 50vh;
   }
-  .signup-box {
+  .login-box {
     margin-top: 40%;
   }
 }
@@ -92,6 +93,7 @@
   border: 1px solid black;
   padding: 1.5%;
   margin-left: 5%;
+  margin-top: 3%;
   cursor: pointer;
 }
 .button:hover,
@@ -100,14 +102,14 @@
   background-color: #1e1e30;
 }
 @media only screen and (min-device-width: 360px) and (max-device-width: 640px) {
-  .signup-container {
+  .login-container {
     margin-left: 0;
     position: fixed;
     overflow: hidden;
     padding-bottom: 0;
   }
-  .signup-box {
-    height: 58vh;
+  .login-box {
+    height: 45vh;
     margin-top: 7%;
     margin-left: 10%;
     margin-right: 10%;

@@ -4,3 +4,159 @@ $blue:#5584b1;
 $lightBlue:#85c1e5;
 $light:#cbe2ef;
 $cream:#f8f3ea;
+$blue-accent:#6C63FE;
+$f1: 'Poppins', sans-serif;
+
+.login-container{
+    flex: 1;
+    overflow: hidden;
+    margin-left: 100px;
+
+}
+
+.login-box{
+    width: 75%;
+    margin-top: 20%;
+    margin-left: 10ch;
+    border-radius: 50px;
+    background: #F0ECFF;
+    box-shadow:  41px 41px 82px #F0ECFF, 
+             -41px -41px 82px #F0ECFF; 
+}
+.connect-container{
+   overflow: hidden;
+}
+.connect{
+    padding-right: 0;
+    margin-left: 0;
+    width: 100%;
+
+}
+.avatar-container{
+    text-align: center;
+}
+
+.avatar{
+    width: 30%;
+    padding-top: 0;
+    margin-top: -35%;
+    margin-bottom: -40%;
+}
+
+@media only screen   
+and (min-device-width : 768px)   
+and (max-device-width : 1024px)   {
+    .avatar{
+        height: 50vh;
+    }
+    .login-box{
+        margin-top: 40%;
+    }
+}
+
+
+
+.tab{
+    height: 5vh;
+    background-color: $dark;
+    width: 100%;
+}
+
+.link1, .link2{
+    text-decoration: none;
+    font-family: $f1;
+    color: $light;
+    font-size: 1.6em;
+}
+.link2{
+    margin-top: 5px;
+    float: right;
+    padding-right:15%;
+}
+.link1{
+    margin-top: 5px;
+    float: left;
+    padding-left: 15%;
+}
+
+
+.input{
+    background-color:$dark;
+    border-radius: 7px;
+    border: 0px;
+    width: 70%;
+    margin-left: 5%;
+    margin-top: 5%;
+    padding: 2%;
+    color:white !important;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+}
+
+.input:focus {
+    outline: none !important;
+    border: 2.5px solid white;
+    box-shadow: 0 0 10px $blue-accent;
+}
+.input::placeholder{
+    font-family: 'Work Sans', sans-serif;
+    color:white;
+    opacity: 0.8;
+    font-size: 1.3em;
+}
+
+.note{
+    text-align: center;
+}
+
+.button{
+    font-size: 1.2em;
+    font-weight: 100;
+    color: white;
+    border-radius: 5px;
+    background-color: $blue-accent;
+    border: 1px solid black;
+    padding: 1.5%;
+    margin-left: 5%;
+    margin-top: 3%;
+    cursor: pointer;
+}
+
+.button:hover, .button:active{
+    color: white;
+    background-color:$dark;
+}
+
+
+@media only screen   
+    and (min-device-width : 360px)   
+    and (max-device-width : 640px)   {
+    .login-container{
+        margin-left: 0;
+        position: fixed;
+        overflow: hidden;
+        padding-bottom: 0;
+    }
+    .login-box{
+        height: 45vh;
+        margin-top: 7%;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+        padding-bottom: 0;
+    }
+
+    .link2, .link1{
+        font-size: 1.4em;
+    }
+    .avatar{
+        height: 46vh;
+    }
+    .connect-container{
+        width: 99%;
+    }
+    .connect{
+        height: 40%;
+    }
+    
+}
