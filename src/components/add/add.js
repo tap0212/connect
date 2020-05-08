@@ -58,10 +58,28 @@ import './add.scss'
           })
       }
 
+      const getLocation = () => {
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(getCoordinates)
+        }else{
+            alert('No Location')
+        }
+    }
+
+     const getCoordinates = (position) => {
+        setValues({
+            ...values,
+            latitude: position.coords.latitude,
+            longitude:position.coords.longitude
+        })
+    }
+    useEffect(() => {
+        getLocation();
+    },[])
+
       useEffect(() => {
           preload();
       }, [])
-
       const onSubmit = event => {
           event.preventDefault();
           setValues({...values, error:"", loading:true});
@@ -78,8 +96,6 @@ import './add.scss'
                       expiry:"",
                       phone:"",
                       venue:"",
-                      longitude:"",
-                      latitude:"",
                       photo:"",
                       loading:false,
                       createdEvent:data.title
@@ -93,10 +109,11 @@ import './add.scss'
           formData.set(name, value);
           setValues({...values, [name]: value});
       }
-
+      console.log(longitude, latitude)
 
     return (
         <div className="home-container">
+        {console.log(longitude, latitude)}
             <VNav/>
             <div className="home-content-container">
                 <Grid container spacing={3}>
@@ -154,6 +171,22 @@ import './add.scss'
                                  placeholder="Event Venue"
                                  />
                                  <input
+                                 
+                                 name="longitude"
+                                 value={longitude}
+                                 className="add-input" 
+                                 type="text"
+                                 placeholder="Event Venue"
+                                 />
+                                   <input
+                                 
+                                 name="latitude"
+                                 value={latitude}
+                                 className="add-input" 
+                                 type="text"
+                                 placeholder="Event Venue"
+                                 />
+                                 <input
                                  onChange={handleChange("photo")}
                                  name="photo"
                                  accept="image"
@@ -188,7 +221,7 @@ import './add.scss'
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <Map  center={[27.398634, 80.31691]} zoom={13}>
+                        <Map className="map"  center={[27.398634, 80.31691]} zoom={13}>
                         <TileLayer
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

@@ -13,7 +13,7 @@
 .addEvent-container {
   margin-top: 5vh;
   margin-left: 5ch;
-  height: 80vh;
+  height: 93vh;
   border: 1px solid black;
 }
 .add {
@@ -67,6 +67,11 @@
 .button:active {
   color: white;
   background-color: #1e1e30;
+}
+.map {
+  height: 93vh;
+  margin-top: 5vh;
+  width: 98%;
 }
 @media only screen and (max-width: 600px) {
   .home-content-container {

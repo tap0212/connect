@@ -23,7 +23,7 @@ $f1: 'Poppins', sans-serif;
 .addEvent-container{
     margin-top: 5vh;
     margin-left: 5ch;
-    height: 80vh;
+    height: 93vh;
     border: 1px solid black;
 }
 
@@ -84,6 +84,12 @@ $f1: 'Poppins', sans-serif;
 .add-button:hover, .button:active{
     color: white;
     background-color:$dark;
+}
+
+.map{
+    height: 93vh;
+    margin-top: 5vh;
+    width: 98%;
 }
 
 

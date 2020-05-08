@@ -44,8 +44,8 @@ export default class  Home extends React.Component {
                     <Grid item xs={12} sm={6}>
                         <h1>Notifications Around You</h1>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <Map  center={[27.398634, 80.31691]} zoom={13}>
+                    <Grid  item xs={12} sm={6}>
+                        <Map className='map' center={[27.398634, 80.31691]} zoom={13}>
                         <TileLayer
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
