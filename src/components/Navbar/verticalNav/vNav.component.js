@@ -26,7 +26,7 @@ function VNav() {
                 <span class="tooltiptext">Notification</span>
                 </div>
             </Link>
-            <Link className="link" to='/'>
+            <Link className="link" to='/add'>
                 <div className="tooltip">
                 <PlusOneTwoToneIcon className="icon" style={{ fontSize: 35 }}/>
                 <span class="tooltiptext">Add</span>

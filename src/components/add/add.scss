@@ -1,0 +1,94 @@
+$dark:#1E1E30;
+$navy:#254e7b;
+$blue:#5584b1;
+$lightBlue:#85c1e5;
+$light:#cbe2ef;
+$cream:#f8f3ea;
+$blue-accent:#6C63FE;
+$f1: 'Poppins', sans-serif;
+*{
+    font-family: $f1;
+}
+.home-content-container{
+    flex:1;
+    margin-left:100px;
+    height: 100vh;
+}
+
+.leaflet-container{
+    height: 100vh;
+    width: 100%;
+}
+
+.addEvent-container{
+    margin-top: 5vh;
+    margin-left: 5ch;
+    height: 80vh;
+    border: 1px solid black;
+}
+
+.add{
+    margin-left: 5%;
+    font-size: 2.2em;
+}
+
+
+.add-input{
+    background-color:$dark;
+    border-radius: 7px;
+    border: 0px;
+    width: 70%;
+    margin-left: 5%;
+    margin-top: 2%;
+    padding: 2%;
+    color:white !important;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+}
+
+.add-input:focus {
+    outline: none !important;
+    border: 2.5px solid white;
+    box-shadow: 0 0 10px $blue-accent;
+}
+.add-input::placeholder{
+    font-family: 'Work Sans', sans-serif;
+    color:white;
+    opacity: 0.8;
+    font-size: 1.3em;
+}
+
+.add-select{
+    margin: 2%;
+    margin-left: 5%;
+    margin-bottom: 0;
+    font-size: 1.2em;
+    background-color: $dark;
+    color: white;
+}
+
+
+.add-button{
+    font-size: 1.2em;
+    font-weight: 100;
+    color: white;
+    border-radius: 5px;
+    background-color: $blue-accent;
+    border: 1px solid black;
+    padding: 1.5%;
+    margin-left: 5%;
+    margin-top: 3%;
+    cursor: pointer;
+}
+
+.add-button:hover, .button:active{
+    color: white;
+    background-color:$dark;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .home-content-container{
+        margin-left: 20px;
+    }
+}
