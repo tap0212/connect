@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 import {getCategories, createEvent} from './apicalls'
 import {isAuthenticated} from '../../APICalls/auth'
 import VNav from '../Navbar/verticalNav/vNav.component'
-import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
-import { Icon} from 'leaflet'
+import { ReactBingmaps } from 'react-bingmaps';
+
 import './add.scss'
 
  const  Add = ()  => {
@@ -17,8 +17,6 @@ import './add.scss'
         expiry: "",
         phone: "",
         venue:"",
-        longitude:"",
-        latitude:"",
         photo:"",
         categories: [],
         category: "",
@@ -36,8 +34,6 @@ import './add.scss'
           expiry,
           phone,
           venue,
-          longitude,
-          latitude,
           categories,
           category,
           loading,
@@ -58,24 +54,24 @@ import './add.scss'
           })
       }
 
-      const getLocation = () => {
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(getCoordinates)
-        }else{
-            alert('No Location')
-        }
-    }
+    //   const getLocation = () => {
+    //     if(navigator.geolocation){
+    //         navigator.geolocation.getCurrentPosition(getCoordinates)
+    //     }else{
+    //         alert('No Location')
+    //     }
+    // }
 
-     const getCoordinates = (position) => {
-        setValues({
-            ...values,
-            latitude: position.coords.latitude,
-            longitude:position.coords.longitude
-        })
-    }
-    useEffect(() => {
-        getLocation();
-    },[])
+    //  const getCoordinates = (position) => {
+    //     setValues({
+    //         ...values,
+    //         latitude: position.coords.latitude,
+    //         longitude:position.coords.longitude
+    //     })
+    // }
+    // useEffect(() => {
+    //     getLocation();
+    // },[])
 
       useEffect(() => {
           preload();
@@ -83,8 +79,9 @@ import './add.scss'
       const onSubmit = event => {
           event.preventDefault();
           setValues({...values, error:"", loading:true});
+          console.log(values)
           createEvent(user._id, token, formData).then(data => {
-              console.log(data)
+              console.log(formData)
               if(data.error){
                   setValues({...values, error:data.error})
               }else{
@@ -109,11 +106,9 @@ import './add.scss'
           formData.set(name, value);
           setValues({...values, [name]: value});
       }
-      console.log(longitude, latitude)
 
     return (
-        <div className="home-container">
-        {console.log(longitude, latitude)}
+        <div className="add-container">
             <VNav/>
             <div className="home-content-container">
                 <Grid container spacing={3}>
@@ -170,22 +165,7 @@ import './add.scss'
                                  type="text"
                                  placeholder="Event Venue"
                                  />
-                                 <input
-                                 
-                                 name="longitude"
-                                 value={longitude}
-                                 className="add-input" 
-                                 type="text"
-                                 placeholder="Event Venue"
-                                 />
-                                   <input
-                                 
-                                 name="latitude"
-                                 value={latitude}
-                                 className="add-input" 
-                                 type="text"
-                                 placeholder="Event Venue"
-                                 />
+                    
                                  <input
                                  onChange={handleChange("photo")}
                                  name="photo"
@@ -194,7 +174,6 @@ import './add.scss'
                                  type="file"
                                  placeholder="Choose an image (if any)"
                                  />
-
                                 <div className="select">
                                 <select
                                     onChange={handleChange("category")}
@@ -221,12 +200,14 @@ import './add.scss'
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <Map className="map"  center={[27.398634, 80.31691]} zoom={13}>
-                        <TileLayer
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        />
-                        </Map>
+                    <ReactBingmaps 
+                        id = "one"
+                        bingmapKey =  'ArzAufq-ny6rTgIo5CnHtOCDEQrlNRUmUulXgYQdr9DVwCnXgTOdX1SAUY6iejHO'
+                        center = {[13.0827, 80.2707]}
+                        zoom = {4}
+                        className = "map"
+                        > 
+                    </ReactBingmaps>
                     </Grid>
                 </Grid>
             </div>

@@ -68,6 +68,9 @@
   color: white;
   background-color: #1e1e30;
 }
+.add-container {
+  overflow: hidden;
+}
 .map {
   height: 93vh;
   margin-top: 5vh;
@@ -76,5 +79,8 @@
 @media only screen and (max-width: 600px) {
   .home-content-container {
     margin-left: 20px;
+  }
+  .add-container {
+    overflow: scroll;
   }
 }

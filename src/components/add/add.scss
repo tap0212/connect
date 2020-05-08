@@ -86,6 +86,10 @@ $f1: 'Poppins', sans-serif;
     background-color:$dark;
 }
 
+.add-container{
+    overflow: hidden;
+}
+
 .map{
     height: 93vh;
     margin-top: 5vh;
@@ -96,5 +100,8 @@ $f1: 'Poppins', sans-serif;
 @media only screen and (max-width: 600px) {
     .home-content-container{
         margin-left: 20px;
+    }
+    .add-container{
+        overflow: scroll;
     }
 }

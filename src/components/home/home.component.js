@@ -1,8 +1,7 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
 import VNav from '../Navbar/verticalNav/vNav.component'
-import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
-import { Icon} from 'leaflet'
+import { ReactBingmaps } from 'react-bingmaps';
 import './home.styles.scss'
 
 export default class  Home extends React.Component {
@@ -45,12 +44,14 @@ export default class  Home extends React.Component {
                         <h1>Notifications Around You</h1>
                     </Grid>
                     <Grid  item xs={12} sm={6}>
-                        <Map className='map' center={[27.398634, 80.31691]} zoom={13}>
-                        <TileLayer
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        />
-                        </Map>
+                    <ReactBingmaps 
+                        id = "one"
+                        bingmapKey =  'ArzAufq-ny6rTgIo5CnHtOCDEQrlNRUmUulXgYQdr9DVwCnXgTOdX1SAUY6iejHO'
+                        center = {[13.0827, 80.2707]}
+                        zoom = {4}
+                        className = "map"
+                        > 
+                    </ReactBingmaps>
                     </Grid>
                 </Grid>
             </div>
