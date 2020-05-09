@@ -1,0 +1,23 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+.event-tile {
+  border: 1px solid red;
+  width: 80ch;
+  margin-top: 2vh;
+  padding: 2%;
+}
+.event-title {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.event-venue {
+  display: block;
+  float: right;
+}
+.event-phone {
+  display: block;
+  float: right;
+}
