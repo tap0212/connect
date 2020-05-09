@@ -65,6 +65,7 @@ export default class  Home extends React.Component {
     return (
         <div className="home-container">
             <VNav/>
+            {console.log(this.state.latitude, this.state.longitude)}
             <div className="home-content-container">
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>

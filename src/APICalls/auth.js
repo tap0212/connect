@@ -31,6 +31,29 @@ export const signin = user => {
     .catch(err => console.log(err))
 }
 
+export const getAuthUser = (userId, token) => {
+    return fetch(`${API}/user/${userId}`, {
+         method: "GET",
+            headers: {
+                Authorization:`Bearer ${token}`
+            }
+        })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+}
+
+export const findUser = (userId) => {
+    return fetch(`${API}/find/user/${userId}`,{
+        method:"GET"
+    }).then(response => {
+        return response.json()
+    })
+    .catch(err => console.log(err))
+}
+
+
 export const authenticate = (data, next) => {
     if(typeof window !== 'undefined') {
         localStorage.setItem("jwt", JSON.stringify(data));
@@ -61,3 +84,4 @@ export const isAuthenticated = () => {
         return false;
     }
 }
+

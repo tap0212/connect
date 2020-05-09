@@ -4,13 +4,21 @@ import {Link} from 'react-router-dom'
 import {getCategories, createEvent} from './apicalls'
 import {isAuthenticated} from '../../APICalls/auth'
 import VNav from '../Navbar/verticalNav/vNav.component'
+import { css } from "@emotion/core";
+import {Alert} from '@material-ui/lab'
+import {PropagateLoader} from "react-spinners";
 import { ReactBingmaps } from 'react-bingmaps';
 
 import './add.scss'
 
  const  Add = ()  => {
+    const override = css`
+    display: block;
+    margin-left:50%;
+   `;
     const { user, token } = isAuthenticated();
     const [values, setValues] = useState({
+        name:"",
         title: "",
         description: "",
         link: "",
@@ -21,6 +29,7 @@ import './add.scss'
         categories: [],
         category: "",
         loading: false,
+        success: false,
         error: "",
         createdEvent: "",
         getaRedirect: false,
@@ -28,6 +37,7 @@ import './add.scss'
       });
 
       const {
+          name,
           title, 
           description,
           link,
@@ -37,6 +47,7 @@ import './add.scss'
           categories,
           category,
           loading,
+          success,
           error,
           createdEvent,
           getaRedirect,
@@ -83,10 +94,11 @@ import './add.scss'
           createEvent(user._id, token, formData).then(data => {
               console.log(formData)
               if(data.error){
-                  setValues({...values, error:data.error})
+                  setValues({...values, error:data.error, success:false})
               }else{
                   setValues({
                       ...values,
+                      name:"",
                       title:"",
                       description:"",
                       link:"",
@@ -95,6 +107,7 @@ import './add.scss'
                       venue:"",
                       photo:"",
                       loading:false,
+                      success:true,
                       createdEvent:data.title
                   })
               }
@@ -107,6 +120,23 @@ import './add.scss'
           setValues({...values, [name]: value});
       }
 
+      const Flash = () => {
+        if(error){
+            return  <Alert severity="error"><span className="flash">{error}</span></Alert>
+        }
+        if(success===true){
+            return  <Alert   severity="success"><span className="flash">Event Created Successfully</span></Alert>
+        }
+        if(loading === true){
+            return <PropagateLoader
+            css={override}
+            size={25}
+            color={"#6C63FE"}
+            loading={loading}
+          />
+        }
+    }
+
     return (
         <div className="add-container">
             <VNav/>
@@ -115,7 +145,16 @@ import './add.scss'
                     <Grid item xs={12} sm={6}>
                         <div className="addEvent-container">
                         <h1 className="add">Add Notification</h1>
+                        {Flash()}
                         <form>
+                                 <input
+                                 onChange={handleChange("name")}
+                                 name="name"
+                                 value={name}
+                                 className="add-input" 
+                                 type="text"
+                                 placeholder="Your Name"
+                                 />
                                 <input
                                  onChange={handleChange("title")}
                                  name="title"
