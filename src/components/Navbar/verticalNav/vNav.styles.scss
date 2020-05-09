@@ -17,9 +17,8 @@ $f1: 'Poppins', sans-serif;
     overflow-x: hidden; 
     transition: 0.3s;
 }
-
-
-.logo{
+.home-link{
+    text-decoration: none;
     color: white;
     font-size: 1.1em;
     font-family: $f1;
@@ -27,6 +26,10 @@ $f1: 'Poppins', sans-serif;
     margin-top: 4px;
     margin-top: 20px;
     margin-bottom: 30px;
+}
+
+.logo{
+    
 }
 
 .icon{

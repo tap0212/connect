@@ -4,8 +4,8 @@ import VNav from '../Navbar/verticalNav/vNav.component'
 import {getEvents} from '../add/apicalls'
 import { ReactBingmaps } from 'react-bingmaps';
 import EventTile from './event-tile/event-tile'
-import './home.styles.scss'
-export default class  Home extends React.Component {
+import './notification.styles.scss'
+export default class  Notification extends React.Component {
 
     constructor(props){
         super(props)

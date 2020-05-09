@@ -8,6 +8,8 @@ import { css } from "@emotion/core";
 import {Alert} from '@material-ui/lab'
 import {PropagateLoader} from "react-spinners";
 import { ReactBingmaps } from 'react-bingmaps';
+import Geocode from "react-geocode";
+
 
 import './add.scss'
 
@@ -136,6 +138,20 @@ import './add.scss'
           />
         }
     }
+
+    //react-geoocode code goes here
+    Geocode.setApiKey("AIzaSyArCZhn2XXJghIwEaliX1mkdn1ZC7ob9k4")
+    Geocode.setLanguage("en");
+    Geocode.enableDebug();
+    Geocode.fromAddress("Eiffel Tower").then(
+        response => {
+            const {lat, lng} = response.results[0].geometry.location;
+            console.log(lat,lng);
+        },
+        error => {
+            console.log(error)
+        }
+    )
 
     return (
         <div className="add-container">
