@@ -21,7 +21,7 @@ import './add.scss'
    
     const { user, token } = isAuthenticated();
     const [values, setValues] = useState({
-        name:"",
+        person:null,
         title: "",
         description: "",
         phone: "",
@@ -34,14 +34,14 @@ import './add.scss'
         error: "",
         createdEvent: "",
         getaRedirect: false,
-        longitude: "",
-        latitude: "",
+        longitude: null,
+        latitude: null,
         formData: ""
       });
 
      
       const {
-          name,
+          person,
           title, 
           description,
           phone,
@@ -103,7 +103,7 @@ import './add.scss'
               }else{
                   setValues({
                       ...values,
-                      name:"",
+                      person:null,
                       title:"",
                       description:"",
                       link:"",
@@ -111,8 +111,8 @@ import './add.scss'
                       phone:"",
                       venue:"",
                       photo:"",
-                      longitude:"",
-                      latitude:"",
+                      longitude:null,
+                      latitude:null,
                       loading:false,
                       success:true,
                       createdEvent:data.title
@@ -168,14 +168,18 @@ import './add.scss'
                         <h1 className="add">Add Notification</h1>
                         {Flash()}
                         <form>
-                                 <input
-                                 onChange={handleChange("name")}
-                                 name="name"
-                                 value={name}
-                                 className="add-input" 
-                                 type="text"
-                                 placeholder="Your Name"
-                                 />
+                        <select
+                                    onChange={handleChange("person")}
+                                    className="add-select"
+                                    placeholder="User Name"
+                                    >
+                                    <option>User Name</option>
+                                    
+                                        <option  value={user._id}>
+                                            {user.name}
+                                        </option>
+                                    
+                                </select>
                                 <input 
                                  onChange={handleChange("title")}
                                  name="title"
