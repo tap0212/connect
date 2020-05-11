@@ -194,7 +194,6 @@ const geolocateStyle = {
     return (
         <div className="add-container">
             <VNav/>
-            {console.log(this.state.viewport.height)}
             <div className="home-content-container">
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
