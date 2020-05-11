@@ -7,8 +7,8 @@ import VNav from '../Navbar/verticalNav/vNav.component'
 import { css } from "@emotion/core";
 import {Alert} from '@material-ui/lab'
 import {PropagateLoader} from "react-spinners";
-import { ReactBingmaps } from 'react-bingmaps';
-import Geocode from "react-geocode";
+import Geocoder from 'react-mapbox-gl-geocoder'
+import ReactMapGL, {GeolocateControl} from 'react-map-gl'
 
 
 import './add.scss'
@@ -18,13 +18,12 @@ import './add.scss'
     display: block;
     margin-left:50%;
    `;
+   
     const { user, token } = isAuthenticated();
     const [values, setValues] = useState({
         name:"",
         title: "",
         description: "",
-        link: "",
-        expiry: "",
         phone: "",
         venue:"",
         photo:"",
@@ -35,15 +34,16 @@ import './add.scss'
         error: "",
         createdEvent: "",
         getaRedirect: false,
+        longitude: "",
+        latitude: "",
         formData: ""
       });
 
+     
       const {
           name,
           title, 
           description,
-          link,
-          expiry,
           phone,
           venue,
           categories,
@@ -53,48 +53,51 @@ import './add.scss'
           error,
           createdEvent,
           getaRedirect,
+          longitude,
+          latitude,
           formData
       } = values;
+      const [mappingData, setMappingData] = useState({
+          viewportt: {}
+      })
+      const {viewport} = mappingData;
+      const onSelected = (viewport, item) => {
+        setMappingData({
+            viewport:viewport
+        })
+        console.log('Selected: ', item)
+    }
+   
 
-      const preload = () => {
-          getCategories().then(data => {
-              console.log(data)
-              if(data.error){
-                  setValues({...values, error:data.error})
-              }else{
-                  setValues({...values, categories:data, formData:new FormData()})
-              }
-          })
-      }
-
-    //   const getLocation = () => {
-    //     if(navigator.geolocation){
-    //         navigator.geolocation.getCurrentPosition(getCoordinates)
-    //     }else{
-    //         alert('No Location')
-    //     }
-    // }
-
-    //  const getCoordinates = (position) => {
-    //     setValues({
-    //         ...values,
-    //         latitude: position.coords.latitude,
-    //         longitude:position.coords.longitude
-    //     })
-    // }
-    // useEffect(() => {
-    //     getLocation();
-    // },[])
+    const preload = () => {
+        getCategories().then(data => {
+            if(data.error){
+                setValues({...values, error:data.error})
+            }else{
+                setValues({...values, categories:data, formData:new FormData()})
+            }
+        })
+    }
 
       useEffect(() => {
           preload();
       }, [])
+
+
+      const handleChange = name => event => {
+        const value = name == "photo" ? event.target.files[0] : event.target.value;
+        formData.set(name, value);
+        
+        setValues({...values, [name]: value});
+    }
+
       const onSubmit = event => {
           event.preventDefault();
+          
           setValues({...values, error:"", loading:true});
           console.log(values)
           createEvent(user._id, token, formData).then(data => {
-              console.log(formData)
+              console.log(data)
               if(data.error){
                   setValues({...values, error:data.error, success:false})
               }else{
@@ -108,6 +111,8 @@ import './add.scss'
                       phone:"",
                       venue:"",
                       photo:"",
+                      longitude:"",
+                      latitude:"",
                       loading:false,
                       success:true,
                       createdEvent:data.title
@@ -116,16 +121,10 @@ import './add.scss'
           })
       }
 
-      const handleChange = name => event => {
-          const value = name == "photo" ? event.target.files[0] : event.target.value;
-          formData.set(name, value);
-          setValues({...values, [name]: value});
-      }
+   
 
       const Flash = () => {
-        if(error){
-            return  <Alert severity="error"><span className="flash">{error}</span></Alert>
-        }
+        
         if(success===true){
             return  <Alert   severity="success"><span className="flash">Event Created Successfully</span></Alert>
         }
@@ -139,20 +138,26 @@ import './add.scss'
         }
     }
 
-    //react-geoocode code goes here
-    Geocode.setApiKey("AIzaSyArCZhn2XXJghIwEaliX1mkdn1ZC7ob9k4")
-    Geocode.setLanguage("en");
-    Geocode.enableDebug();
-    Geocode.fromAddress("Eiffel Tower").then(
-        response => {
-            const {lat, lng} = response.results[0].geometry.location;
-            console.log(lat,lng);
-        },
-        error => {
-            console.log(error)
-        }
-    )
+    
+    const mapAccess = {
+        mapboxApiAccessToken: 'pk.eyJ1IjoidGFwMDIxMiIsImEiOiJjangxbjNwa3IwYW9zNDlxZnAzdHNpZGxoIn0.7jVwdPa1rMpYPrDMkdz0Pg'
+    }
+    const map_Style = {
+        height: '100vh',
+        
+        width: '98%'
+        
+    }
+     
+    const queryParams = {
+        country: 'in'
+    }
 
+    const geolocateStyle = {
+        float: 'right',
+        margin: '20px',
+        padding: '10px'
+      };
     return (
         <div className="add-container">
             <VNav/>
@@ -171,7 +176,7 @@ import './add.scss'
                                  type="text"
                                  placeholder="Your Name"
                                  />
-                                <input
+                                <input 
                                  onChange={handleChange("title")}
                                  name="title"
                                  value={title}
@@ -188,22 +193,8 @@ import './add.scss'
                                   rows="5"
                                     placeholder="Event Description"
                                   />
-                                  <input
-                                 onChange={handleChange("link")}
-                                 name="link"
-                                 value={link}
-                                 className="add-input" 
-                                 type="text"
-                                 placeholder="Event Link (if any)"
-                                 />
-                                 <input
-                                 onChange={handleChange("expiry")}
-                                 name="expiry"
-                                 value={expiry}
-                                 className="add-input" 
-                                 type="text"
-                                 placeholder="Event Date (dd/mm/yy)"
-                                 />
+                                  
+                            
                                  <input
                                  onChange={handleChange("phone")}
                                  name="phone"
@@ -220,6 +211,7 @@ import './add.scss'
                                  type="text"
                                  placeholder="Event Venue"
                                  />
+
                     
                                  <input
                                  onChange={handleChange("photo")}
@@ -243,6 +235,14 @@ import './add.scss'
                                         </option>
                                         ))}
                                 </select>
+                                <Geocoder
+                                className="add-input"
+                                {...mapAccess} 
+                                onSelected={onSelected} 
+                                viewport={viewport} 
+                                hideOnSelect={true}
+                                queryParams={queryParams}
+                                />
                                 </div>
                                 <button
                                     type="submit"
@@ -255,14 +255,20 @@ import './add.scss'
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                    <ReactBingmaps 
-                        id = "one"
-                        bingmapKey =  'ArzAufq-ny6rTgIo5CnHtOCDEQrlNRUmUulXgYQdr9DVwCnXgTOdX1SAUY6iejHO'
-                        center = {[13.0827, 80.2707]}
-                        zoom = {4}
-                        className = "map"
-                        > 
-                    </ReactBingmaps>
+                        <ReactMapGL
+                        mapStyle="mapbox://styles/mapbox/streets-v11"
+                        {...mapAccess}
+                        {...viewport} {...map_Style}
+                        onViewportChange={
+                            (newViewport) => 
+                                setMappingData({viewport: newViewport})}
+                        >
+                            <GeolocateControl
+                                style={geolocateStyle}
+                                positionOptions={{enableHighAccuracy: true}}
+                                trackUserLocation={true}
+                            />
+                        </ReactMapGL>
                     </Grid>
                 </Grid>
             </div>
