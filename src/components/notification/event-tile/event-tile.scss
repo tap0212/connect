@@ -10,9 +10,12 @@ $f1: 'Poppins', sans-serif;
 }
 .event-tile{
     border:1px solid red;
-    width: 80ch;
+    width: 50ch;
     margin-top: 2vh;
-    padding: 2%;
+    margin-left: 5%;
+    height: 18vh;
+    padding: 1%;
+    padding-bottom: 0;
 }
 .event-title{
     margin-top: 0;
@@ -31,4 +34,61 @@ $f1: 'Poppins', sans-serif;
 .event-phone{
     display: block;
     float: right;
+}
+
+@media only screen   
+and (min-device-width : 768px)   
+and (max-device-width : 1024px)  {
+    .event-tile{
+        width: 45ch;
+        height: 16vh;
+
+    }
+}
+
+@media only screen   
+and (orientation : landscape)   
+and (-webkit-min-device-pixel-ratio: 1)  
+and (min-device-width : 768px)   
+and (max-device-width : 1007px)   {
+    .event-tile{
+        width: 40ch;
+        height: 16vh;
+    }
+}
+
+@media only screen and (max-width:375px){
+    .event-tile{
+        width: 35ch;
+        height: 20vh;
+    }
+}
+
+@media only screen and (max-width:375px) and (min-height:812px){
+    .event-tile{
+        width: 30ch;
+        height: 20vh;
+    }
+}
+
+
+@media only screen and (max-width:414px){
+    .event-tile{
+        width: 38ch;
+        height: 20vh;
+    }
+}
+
+@media only screen and (max-width:360px){
+    .event-tile{
+        width: 34ch;
+        height: 22vh;
+    }
+}
+
+@media only screen and (max-width:320px){
+    .event-tile{
+        width:30ch;
+        height: 26vh;
+    }
 }

@@ -12,9 +12,8 @@
 }
 .addEvent-container {
   margin-top: 5vh;
-  margin-left: 5ch;
-  height: 93vh;
-  border: 1px solid black;
+  margin-left: 0ch;
+  height: 50vh;
 }
 .add {
   margin-left: 5%;
@@ -58,7 +57,6 @@
   color: white;
   border-radius: 5px;
   background-color: #6c63fe;
-  border: 1px solid black;
   padding: 1.5%;
   margin-left: 5%;
   margin-top: 3%;
@@ -72,10 +70,29 @@
 .add-container {
   overflow: hidden;
 }
-.map {
-  height: 93vh;
-  margin-top: 5vh;
-  width: 98%;
+.next {
+  font-size: 1.2em;
+  color: white;
+  border-radius: 5px;
+  background-color: #6c63fe;
+  padding: 1.5%;
+  margin-right: 20%;
+  float: right;
+  margin-top: 3%;
+  cursor: pointer;
+}
+.previous {
+  font-size: 1.2em;
+  color: white;
+  border-radius: 5px;
+  background-color: #6c63fe;
+  padding: 1.5%;
+  margin-top: 3%;
+  margin-left: 5%;
+  cursor: pointer;
+}
+.map-container {
+  border: 2px solid red;
 }
 @media only screen and (max-width: 600px) {
   .home-content-container {
