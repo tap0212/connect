@@ -101,3 +101,67 @@ export const updateEvent = (eventId, userId, token, event) => {
     })
     .catch(err => console.log(err));
 };
+
+
+//location
+
+export const createLocation = (location) => {
+  return fetch(`${API}/location/create`,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify(location)
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch(err => console.log(err))
+}
+
+export const getAllLocations = () => {
+  return fetch(`${API}/locations`,{
+    method:"GET"
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch(err => console.log(err))
+}
+
+export const getLocation = (locationId) => {
+  return fetch(`${API}/location/locationId`, {
+    method:"GET",
+  })
+  .then(response => {
+    return response.json()
+  })
+  .catch(err => console.log(err))
+}
+
+export const deleteLocation = (locationId) => {
+  return fetch(`${API}/location/${locationId}`,{
+    method:"DELETE",
+    headers:{
+      Accept:"application/json"
+    }
+  })
+  .then(response => {
+    return response.json()
+  })
+  .catch(err => console.log(err))
+}
+
+export const updateLocation = (locationId, location) => {
+  return fetch(`${API}/location/${locationId}`, {
+    method:"PUT",
+    headers:{
+      Accept:"application/json"
+    },
+    body:JSON.stringify(location)
+  })
+  .then(response => {
+    return response.json()
+  })
+  .catch(err => console.log(err))
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
-import {Link} from 'react-router-dom'
-import {getCategories, createEvent} from './apicalls'
+import {Redirect} from 'react-router-dom'
+import {getCategories, createEvent, createLocation} from './apicalls'
 import {isAuthenticated} from '../../APICalls/auth'
 import VNav from '../Navbar/verticalNav/vNav.component'
 import { css } from "@emotion/core";
@@ -50,7 +50,6 @@ const geolocateStyle = {
             loading: false,
             success: false,
             error: "",
-            createdEvent: "",
             getaRedirect: false,
             formData: "",
             viewport:{
@@ -61,7 +60,9 @@ const geolocateStyle = {
                 width:"100%"
             },
             currentStep:1,
-            location:""
+            event: "",
+            longitude:null,
+            latitude:null
         }
 
         this.preload = this.preload.bind(this)
@@ -142,7 +143,11 @@ const geolocateStyle = {
     }
 
     onSelected = (viewport, item) => {
-      this.setState({viewport});
+      this.setState({
+        viewport:viewport,
+        longitude:item.geometry.coordinates[0],
+        latitude:item.geometry.coordinates[1]
+      });
   }
 
        onSubmit = event => {
@@ -166,18 +171,44 @@ const geolocateStyle = {
                       photo:"",
                       loading:false,
                       success:true,
-                      createdEvent:data.title
+                      event:data._id
                   })
               }
           })
       }
 
+       saveLocation = event => {
+        event.preventDefault()
+        // setValues({...values, error:'', loading:true});
+        createLocation({event:this.state.event, latitude:this.state.latitude, longitude:this.state.longitude})
+            .then(data => {
+                if(data.error){
+                    // setValues({...values, error:data.error, loading:false})
+                    console.log(data.error)
+                }
+                else{
+                    this.setState({getaRedirect:true})
+                    console.log(data)
+                }
+            }).catch(console.log("error in login"))
+    }
+
+    performRedirect = () => {
+      if(this.state.getaRedirect){
+              return <Redirect to='/notification'></Redirect> 
+      }
+  }
    
 
       Flash = () => {
+        if(this.state.error){
+          return  <Alert  severity="error"><span className="flash">{this.state.error}</span></Alert>
+        }
         
         if(this.state.success===true){
-            return  <Alert   severity="success"><span className="flash">Event Created Successfully</span></Alert>
+            return  <Alert   severity="success"><span className="flash">Event Created Successfully
+              <br/>Now Please click next and confirm your exact location
+            </span></Alert>
         }
         if(this.state.loading === true){
             return <PropagateLoader
@@ -197,7 +228,7 @@ const geolocateStyle = {
             <div className="home-content-container">
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
-                        <React.Fragment className="addEvent-container">
+                        <div className="addEvent-container">
                         <h1 className="add">Add Notification</h1>
                         {this.Flash()}
                         <form onSubmit={this.onSubmit}>
@@ -208,6 +239,7 @@ const geolocateStyle = {
                                 title={this.state.title}
                                 description={this.state.description}
                                 venue={this.state.venue}
+                                categories={this.state.categories}
                             />
                             <Step2 
                                 currentStep={this.state.currentStep} 
@@ -218,9 +250,10 @@ const geolocateStyle = {
                             <Step3 
                                 currentStep={this.state.currentStep} 
                                 handleChange={this.handleChange}
-                                categories={this.state.categories}
+                                saveLocation={this.saveLocation}
                                 onSelected={this.onSelected}
                                 viewport={viewport}
+                                performRedirect={this.performRedirect}
                             />
 
                             <div className="nav">
@@ -229,7 +262,7 @@ const geolocateStyle = {
                             </div>
                             </div>
                             </form>
-                        </React.Fragment>
+                        </div>
                     </Grid>
                     <Grid className="map" item xs={12} sm={6}>
                         <React.Fragment className="map-container">
@@ -253,7 +286,6 @@ const geolocateStyle = {
                     </Grid>
                 </Grid>
             </div>
-
         </div>
     )
     }
@@ -290,7 +322,19 @@ function Step1(props) {
             type="text"
             placeholder="Event Venue"
         />
-
+        <select
+        onChange={props.handleChange("category")}
+        className="add-select"
+        placeholder="Category"
+        >
+        <option>Choose Category</option>
+        {props.categories &&
+            props.categories.map((cate, index) => (
+            <option key={index} value={cate._id}>
+                {cate.name}
+            </option>
+            ))}
+        </select>
       </div>
     );
   }
@@ -319,6 +363,7 @@ function Step1(props) {
             type="number"
             placeholder="Phone Number"
         />
+        
         <input
             onChange={props.handleChange("photo")}
             name="photo"
@@ -327,6 +372,12 @@ function Step1(props) {
             type="file"
             placeholder="Choose an image (if any)"
         />
+        <button
+                type="submit"
+                className="add-button"
+            >
+                Create Notification
+            </button> 
       </div>
     );
   }
@@ -338,34 +389,22 @@ function Step1(props) {
     return(
       <React.Fragment>
       <div className="form-group">
-      <select
-        onChange={props.handleChange("category")}
-        className="add-select"
-        placeholder="Category"
-        >
-        <option>Choose Category</option>
-        {props.categories &&
-            props.categories.map((cate, index) => (
-            <option key={index} value={cate._id}>
-                {cate.name}
-            </option>
-            ))}
-        </select>
+      <h3 className="location-h1">Start typing your location and select</h3>
         <Geocoder
             className="add-input"
-            name="location"
             {...mapAccess} 
             onSelected={props.onSelected} 
             viewport={props.viewport} 
             hideOnSelect={true}
             queryParams={queryParams}
             />
-            <button
-                type="submit"
-                className="add-button"
-            >
-                Create Event
-            </button>   
+            
+              <button 
+              className="previous"
+              onClick={props.saveLocation}
+              >
+              Confirm Location</button>
+              {props.performRedirect()}
       </div>
       
       </React.Fragment>

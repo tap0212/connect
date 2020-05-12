@@ -1,10 +1,13 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
 import VNav from '../Navbar/verticalNav/vNav.component'
-import {getEvents} from '../add/apicalls'
+import {getEvents, getAllLocations} from '../add/apicalls'
 import { ReactBingmaps } from 'react-bingmaps';
 import EventTile from './event-tile/event-tile'
+import CheckIcon from '@material-ui/icons/Check';
+import ToggleButton from '@material-ui/lab/ToggleButton';
 import './notification.styles.scss'
+
 export default class  Notification extends React.Component {
 
     constructor(props){
@@ -13,13 +16,39 @@ export default class  Notification extends React.Component {
             longitude:null,
             latitude:null,
             infoboxesWithPushPins:[],
-            eventList:[]
+            eventList:[],
+            eventList5KM:[],
+            eventList10KM:[],
+            locationList:[],
+            distance5:true,
 
         }
         this.getLocation = this.getLocation.bind(this)
         this.getCoordinates = this.getCoordinates.bind(this);
     }
 
+     distance(lat1, lon1, lat2, lon2) {
+        if ((lat1 == lat2) && (lon1 == lon2)) {
+            return 0;
+        }
+        else {
+            var radlat1 = Math.PI * lat1/180;
+            var radlat2 = Math.PI * lat2/180;
+            var theta = lon1-lon2;
+            var radtheta = Math.PI * theta/180;
+            var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+            if (dist > 1) {
+                dist = 1;
+            }
+            dist = Math.acos(dist);
+            dist = dist * 180/Math.PI;
+            dist = dist * 60 * 1.1515;
+            dist = dist * 1.609344 
+            return dist;
+        }
+    }
+
+    
 
     getLocation(){
         if(navigator.geolocation){
@@ -36,27 +65,75 @@ export default class  Notification extends React.Component {
         })
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this.getLocation();
-        getEvents().then(list => this.setState({
-            eventList: list
-        }))
-        getEvents().then(Events => {
-            Events.map(e => {
-                let title = e.title;
-                let lat = e.latitude;
-                let long = e.longitude
-                
-                this.state.infoboxesWithPushPins.push({
-                    "location":[lat, long],
-                    "addHandler":"click",
-                    "infoboxOption": { title: title, description: 'Infobox' },
-                    "pushPinOption":{ title: title, description: 'Pushpin' },
-                    "infoboxAddHandler": {"type" : "click", callback: this.callBackMethod },
-                    "pushPinAddHandler": {"type" : "click", callback: this.callBackMethod }
+        getEvents().then(list => {
+            getAllLocations().then(locations => {
+                this.setState({locationList:locations})
+                list.map(listElement => {
+                    locations.map(e => {
+                        if(listElement._id === e.event){
+                            const title = listElement.title
+                            const lat = e.latitude
+                            const long = e.longitude
+                            this.state.infoboxesWithPushPins.push({
+                                "location":[lat, long],
+                                "addHandler":"mouseover",
+                               "infoboxOption": { title: title, description: 'Infobox' },
+                                "pushPinOption":{ title: title, description: 'Pushpin' },
+                                "infoboxAddHandler": {"type" : "click", callback: this.callBackMethod },
+                                "pushPinAddHandler": {"type" : "click", callback: this.callBackMethod }
+                            })
+                        }
+                    })
+                })
+                list.map(listEvent => {
+                    locations.map(location => {
+                        if(listEvent._id === location.event){
+                            const distance = this.distance(location.latitude, location.longitude, this.state.latitude, this.state.longitude)
+                            if(distance<=5){
+                                this.setState({
+                                    eventList5KM:[...this.state.eventList5KM, listEvent]
+                                })
+                            }
+                            if(distance<=10){
+                                this.setState({
+                                    eventList10KM:[...this.state.eventList10KM, listEvent]
+                                })
+                            }
+                        }
+                    })
                 })
             })
         })
+    }
+
+    renderTile = () => {
+        if(this.state.distance5){
+            if(this.state.eventList5KM.length === 0){
+                return <h2>There are no Notifications around you</h2>
+            }
+            else{
+                return (
+                    this.state.eventList5KM.map(event => {
+                        return <EventTile event={event}/>
+                    })
+                )
+            }
+        }
+
+        if(this.state.distance10){
+            if(this.state.eventList10KM.length === 0){
+                return <h2>There are no Notifications around you</h2>
+            }
+            else{
+                return (
+                    this.state.eventList10KM.map(event => {
+                        return <EventTile event={event}/>
+                    })
+                )
+            }
+        }
     }
 
    
@@ -65,16 +142,56 @@ export default class  Notification extends React.Component {
     return (
         <div className="home-container">
             <VNav/>
-            {console.log(this.state.latitude, this.state.longitude)}
+            {console.log(this.state.eventList5KM)}
             <div className="home-content-container">
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                         <h1>Notifications Around You</h1>
-                        
+                        <div className="filter">
+                            <ToggleButton
+                                value="check"
+                                selected={this.state.distance5}
+                                onChange={() => {
+                                    if(this.state.distance5){
+                                        this.setState({
+                                        distance10:true,
+                                        distance5:false
+                                    })
+                                    }
+                                    else{
+                                        this.setState({
+                                            distance5:true,
+                                            distance10:false
+                                        })
+                                    }
+                                }}
+                                >
+                                    5KM
+                                </ToggleButton>
+
+                                <ToggleButton
+                                value="check"
+                                selected={this.state.distance10}
+                                onChange={() => {
+                                    if(this.state.distance10){
+                                        this.setState({
+                                            distance10:false,
+                                            distance5:true
+                                        })
+                                    }else{
+                                    this.setState({
+                                        distance10:true,
+                                        distance5:false
+                                    })
+                                    }
+                                }}
+                                >
+                                    10KM
+                                </ToggleButton>
+                        </div>
                         <div>
-                        {this.state.eventList.map(event => {
-                            return <EventTile event={event}/>
-                        })
+                        {
+                            this.renderTile()
                         }
                         </div>
                     </Grid>
@@ -82,7 +199,7 @@ export default class  Notification extends React.Component {
                     <ReactBingmaps 
                         bingmapKey =  'ArzAufq-ny6rTgIo5CnHtOCDEQrlNRUmUulXgYQdr9DVwCnXgTOdX1SAUY6iejHO'
                         center = {[this.state.latitude,this.state.longitude]}
-                        zoom = {14}
+                        zoom = {11}
                         className = "map"
                         infoboxesWithPushPins = {this.state.infoboxesWithPushPins}
                         > 

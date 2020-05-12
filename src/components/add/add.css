@@ -6,12 +6,8 @@
   margin-left: 100px;
   height: 100vh;
 }
-.leaflet-container {
-  height: 100vh;
-  width: 100%;
-}
 .addEvent-container {
-  margin-top: 5vh;
+  margin-top: 25vh;
   margin-left: 0ch;
   height: 50vh;
 }
@@ -41,6 +37,9 @@
   color: white;
   opacity: 0.8;
   font-size: 1.3em;
+}
+.location-h1 {
+  margin-left: 5%;
 }
 .add-select {
   padding: 1%;
