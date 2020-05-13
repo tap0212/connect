@@ -1,0 +1,48 @@
+.root {
+  float: 1;
+}
+.events {
+  margin-left: 20%;
+}
+.error-note {
+  margin-top: 5%;
+  text-align: center;
+}
+.note {
+  margin: 20%;
+}
+.empty {
+  text-align: center;
+  height: 80vh;
+}
+.link-profile {
+  text-decoration: none;
+  color: #6c63fe;
+}
+.profile-container {
+  margin-left: 120px;
+  margin-top: 7%;
+}
+.root-title {
+  max-width: 345px;
+  background-color: "#1E1E30";
+}
+.white {
+  color: "white";
+}
+.media {
+  height: 0;
+  padding-top: 56.25%;
+}
+@media only screen and (max-width: 35em) {
+  .profile-container {
+    height: 100vh;
+    margin-top: 20%;
+    padding-bottom: 0;
+    margin-left: 3%;
+  }
+  .empty {
+    width: 70%;
+    height: 50vh;
+  }
+}

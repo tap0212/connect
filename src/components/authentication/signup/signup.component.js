@@ -121,7 +121,7 @@ function Signup() {
                                 </div>
                                 <button 
                                 onClick={onSubmit}
-                                className="button">Sign Up
+                                className="signup-button">Sign Up
                                 </button>
                             </form>
                         </div>

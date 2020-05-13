@@ -4,7 +4,6 @@ import VNav from '../Navbar/verticalNav/vNav.component'
 import {getEvents, getAllLocations} from '../add/apicalls'
 import { ReactBingmaps } from 'react-bingmaps';
 import EventTile from './event-tile/event-tile'
-import CheckIcon from '@material-ui/icons/Check';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import './notification.styles.scss'
 

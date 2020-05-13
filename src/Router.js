@@ -7,6 +7,7 @@ import Signup from './components/authentication/signup/signup.component'
 import Login from './components/authentication/login/login.component'
 import Add from './components/add/add'
 import Home from './components/home/home'
+import Profile from './components/profile/profile'
 
 const Routes = () => {
     return (
@@ -17,6 +18,7 @@ const Routes = () => {
                 <Route path ='/signup' exact component={Signup}></Route>
                 <Route path='/login' exact component={Login}></Route>
                 <PrivateRoutes path='/add' exact component={Add}></PrivateRoutes>
+                <PrivateRoutes path="/profile" exact component={Profile}/>
             </Switch>
         </BrowserRouter>
     )

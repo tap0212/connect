@@ -11,7 +11,7 @@ $f1: 'Poppins', sans-serif;
     flex: 1;
     overflow: hidden;
     margin-left: 100px;
-
+     height: 85vh;
 }
 
 .signup-box{
@@ -21,9 +21,13 @@ $f1: 'Poppins', sans-serif;
     background: #F0ECFF;
     box-shadow:  41px 41px 82px #F0ECFF, 
              -41px -41px 82px #F0ECFF; 
+
 }
 .connect-container{
    overflow: hidden;
+}
+.form{
+    height: 80vh;
 }
 .connect{
     padding-right: 0;
@@ -106,9 +110,12 @@ and (max-device-width : 1024px)   {
 
 .note{
     text-align: center;
+    padding-top: 0;
+    margin-top: 0;
+    transform: translateY(-300%);
 }
 
-.button{
+.signup-button{
     font-size: 1.2em;
     font-weight: 100;
     color: white;
@@ -118,9 +125,10 @@ and (max-device-width : 1024px)   {
     padding: 1.5%;
     margin-left: 5%;
     cursor: pointer;
+    transform: translateY(-22vh);
 }
 
-.button:hover, .button:active{
+.signup-button:hover, .signup-button:active{
     color: white;
     background-color:$dark;
 }

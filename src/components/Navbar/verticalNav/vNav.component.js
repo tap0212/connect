@@ -29,7 +29,13 @@ const  VNav = ({history}) => {
             <span class="tooltiptext">Profile</span>
             </div>
         </Link>
-            
+        }else{
+            return <Link className="link" to='/profile' style={currentTab(history, "/signup")}>
+            <div className="tooltip">
+            <FaceTwoToneIcon className="icon" style={{ fontSize: 35 }}/>
+            <span class="tooltiptext">Profile</span>
+            </div>
+        </Link>
         }
     }
 
