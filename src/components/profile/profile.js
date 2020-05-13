@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import VNav from '../Navbar/verticalNav/vNav.component'
 import {Link} from 'react-router-dom'
-import {getEvents, getAllLocations} from '../add/apicalls'
+import {getEvents, getAllLocations, deleteEvent} from '../add/apicalls'
 import './profile.scss'
 import { isAuthenticated } from '../../APICalls/auth'
 import EventTile from '../notification/event-tile/event-tile'
@@ -34,6 +34,23 @@ class Profile extends Component {
         })
     }
 
+    handleDeleteEvent = (event) => {
+        deleteEvent(event._id,user._id, token)
+          .then(res => {
+            this.updateStateAfterDeletion(this.state.eventList, event)
+            console.log(res)
+          }).catch(err => console.log(err))
+      }
+
+      updateStateAfterDeletion = (eventList, event) => {
+          const index = eventList.indexOf(event)
+          if(index > -1){
+              eventList.splice(event,1)
+              this.setState({
+                  eventList:eventList
+              })
+          }
+      }
     renderTile(){
         if(this.state.eventList.length === 0){
             return (<div className="error-note">
@@ -48,7 +65,7 @@ class Profile extends Component {
             return (
                 this.state.eventList.map(event => {
                     return (<Grid className="events" item xs={12} sm={4} md={3}>
-                        <Tile event={event}/>
+                        <Tile event={event} handleDeleteEvent={this.handleDeleteEvent}/>
                     </Grid>)
                 })
             )

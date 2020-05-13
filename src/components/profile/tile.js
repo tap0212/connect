@@ -21,14 +21,14 @@ const {user, token} = isAuthenticated()
     }
   }
 
-  handleDeleteEvent = () => {
-    deleteEvent(this.props.event._id,user._id, token)
-      .then(res => {
-        this.setState({
-          event:""
-        })
-      }).catch(err => console.log(err))
-  }
+  // handleDeleteEvent = () => {
+  //   deleteEvent(this.props.event._id,user._id, token)
+  //     .then(res => {
+  //       this.setState({
+  //         event:""
+  //       })
+  //     }).catch(err => console.log(err))
+  // }
   render(){
     return (
       <div style={{flex:1, maxWidth:"345px" , padding:"4%", fontFamily:"'Poppins', sans-serif" , backgroundColor:"#1E1E30", color:"white"}}>
@@ -40,7 +40,7 @@ const {user, token} = isAuthenticated()
                   <EditTwoToneIcon style={{fontSize:35}} />
                 </Link>
               </span>
-            <DeleteForeverTwoToneIcon style={{cursor:"pointer",float:"right", fontSize:35}} onClick={this.handleDeleteEvent}  />
+            <DeleteForeverTwoToneIcon style={{cursor:"pointer",float:"right", fontSize:35}} onClick={this.props.handleDeleteEvent.bind(this,this.state.event)}  />
         </div>
         <ImageHelper event={this.state.event} className="media"/>
         <div>
