@@ -47,7 +47,7 @@ class Profile extends Component {
         }else{
             return (
                 this.state.eventList.map(event => {
-                    return (<Grid className="events" item xs={6} sm={3}>
+                    return (<Grid className="events" item xs={12} sm={4} md={3}>
                         <Tile event={event}/>
                     </Grid>)
                 })

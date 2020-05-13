@@ -1,18 +1,13 @@
 import React from 'react';
-
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
 import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import ImageHelper from './image';
 import { Link } from 'react-router-dom';
 import {deleteEvent} from '../add/apicalls'
 import { isAuthenticated } from '../../APICalls/auth';
 import './profile.scss'
+
+
 const {user, token} = isAuthenticated()
 
 
@@ -36,30 +31,21 @@ const {user, token} = isAuthenticated()
   }
   render(){
     return (
-      <div className="root-tile">
-        <div
-          // action={
-          //   <IconButton aria-label="settings">
-          //     <Link to="/edit">
-          //     <EditTwoToneIcon className="white" />
-          //     </Link>
-
-          //     <DeleteForeverTwoToneIcon onClick={this.handleDeleteEvent} className="white" />
-          //   </IconButton>
-          // }
-          className="white"
-        >
-          <h4>{this.state.event.title}</h4>
-              <span>
-              <Link to="/edit">
-               <EditTwoToneIcon className="white" />
-              </Link>
+      <div style={{flex:1, maxWidth:"345px" , padding:"4%", fontFamily:"'Poppins', sans-serif" , backgroundColor:"#1E1E30", color:"white"}}>
+        <div className="white">
+          <h2 style={{textTransform:"uppercase"}}>{this.state.event.title}</h2>
+              <span style={{display:"linear"}} className="link-span">
+                <strong >{this.state.event.category.name}</strong>
+                <Link style={{textDecoration:"none" ,float:"right", color:"white"}} to="/edit">
+                  <EditTwoToneIcon style={{fontSize:35}} />
+                </Link>
               </span>
-            <span><DeleteForeverTwoToneIcon onClick={this.handleDeleteEvent} className="white" /></span>
+            <DeleteForeverTwoToneIcon style={{cursor:"pointer",float:"right", fontSize:35}} onClick={this.handleDeleteEvent}  />
         </div>
         <ImageHelper event={this.state.event} className="media"/>
         <div>
           <p className="white">
+            <strong>Description</strong>: <br/>
             {this.state.event.description}
           </p>
         </div>
