@@ -23,6 +23,10 @@ $f1: 'Poppins', sans-serif;
     width: 98%;
 }
 
+.event-link{
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 600px) {
     .home-content-container{
         margin-left: 20px;
@@ -31,3 +35,38 @@ $f1: 'Poppins', sans-serif;
         overflow: scroll;
     }
 }
+
+@media (min-width: 1281px) and (max-width:1440px) {
+    
+}
+
+  @media (min-width: 1025px) and (max-width: 1280px) {
+  
+    //CSS
+    
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+   
+    
+  }
+  
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    
+    //CSS
+    
+  }
+
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+    
+    
+    
+  }
+  
+
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+    
+  }
+

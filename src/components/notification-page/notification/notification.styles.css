@@ -15,6 +15,9 @@
   margin-top: 5vh;
   width: 98%;
 }
+.event-link {
+  text-decoration: none;
+}
 @media only screen and (max-width: 600px) {
   .home-content-container {
     margin-left: 20px;

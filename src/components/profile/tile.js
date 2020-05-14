@@ -13,7 +13,7 @@ const {user, token} = isAuthenticated()
 
 
 
- class Tile extends React.Component {
+ class EventTile extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -21,18 +21,11 @@ const {user, token} = isAuthenticated()
     }
   }
 
-  // handleDeleteEvent = () => {
-  //   deleteEvent(this.props.event._id,user._id, token)
-  //     .then(res => {
-  //       this.setState({
-  //         event:""
-  //       })
-  //     }).catch(err => console.log(err))
-  // }
   render(){
     return (
       <div style={{flex:1, maxWidth:"345px" , padding:"4%", fontFamily:"'Poppins', sans-serif" , backgroundColor:"#1E1E30", color:"white"}}>
         <div className="white">
+        {console.log(this.state.event)}
           <h2 style={{textTransform:"uppercase"}}>{this.state.event.title}</h2>
               <span style={{display:"linear"}} className="link-span">
                 <strong >{this.state.event.category.name}</strong>
@@ -54,4 +47,4 @@ const {user, token} = isAuthenticated()
   }
 }
 
-export default Tile
+export default EventTile

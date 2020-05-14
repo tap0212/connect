@@ -10,20 +10,24 @@ $f1: 'Poppins', sans-serif;
 .root{
     float: 1;
 }
+
 .events{
     margin-left: 20%;
 }
 .error-note{
-    margin-top: 5%;
+    margin-top: 0%;
     text-align: center;
+    width: 200ch;
+    transform: translateY(-10%);
 }
 
 .note{
     margin: 20%;
 }
 .empty{
+    float: right;
     text-align: center;
-    height: 80vh;
+    width: 100%;
 }
 
 .link-profile{
@@ -34,7 +38,6 @@ $f1: 'Poppins', sans-serif;
     margin-left: 120px;
     margin-top: 7%;
 }
-
 
 @media only screen and (max-width: 35em){
     .profile-container{
@@ -51,97 +54,65 @@ $f1: 'Poppins', sans-serif;
     }
     
 }
-
-@mixin faded($offset, $blur-radius, $spread-radius)
-{
-    &.faded-left:after {
-        box-shadow: inset $offset 0 $blur-radius (-$spread-radius);
-    }
-
-    &.faded-right:after {
-        box-shadow: inset (-$offset) 0 $blur-radius (-$spread-radius);
-    }
-
-
-    &.faded-left.faded-right:after {
-        box-shadow: inset $offset 0 $blur-radius (-$spread-radius), inset (-$offset) 0 $blur-radius (-$spread-radius);
-    }
-
-    &.faded-left.faded-top:after {
-        box-shadow: inset $offset ($offset) $blur-radius (-$spread-radius);
-    }
-
-    &.faded-right.faded-bottom:after {
-        box-shadow: inset (-$offset) (-$offset) $blur-radius (-$spread-radius);
-    }
-
-    &.faded-top.faded-right:after {
-        box-shadow: inset (-$offset) $offset $blur-radius (-$spread-radius);
-    }
-
-    &.faded-left.faded-bottom:after {
-        box-shadow: inset $offset (-$offset) $blur-radius (-$spread-radius);
-    }
-
-    &.faded-top.faded-right.faded-bottom:after {
-        box-shadow: inset (-$offset/2) 0 $blur-radius $spread-radius;
-    }
-
-    &.faded-left.faded-right.faded-bottom:after {
-        box-shadow: inset 0 (-$offset/2) $blur-radius $spread-radius;
-    }
-
-    &.faded-left.faded-top.faded-bottom:after {
-        box-shadow: inset ($offset/2) 0 $blur-radius $spread-radius;
-    }
-
-    &.faded-left.faded-top.faded-right:after {
-        box-shadow: inset 0 ($offset/2) $blur-radius $spread-radius;
-    }
-
-    &.faded-all:after, &.faded-left.faded-top.faded-right.faded-bottom:after {
-        box-shadow: inset 0 0 $blur-radius $spread-radius;
-    }
+img{
+    min-height: 250px;
 }
 
 
-
-
-$faded-offset: 40px !default;
-$faded-blur-radius: 40px !default;
-$faded-spread-radius: 16px !default;
-
-$faded-narrow-offset: 20px !default;
-$faded-narrow-blur-radius: 20px !default;
-$faded-narrow-spread-radius: 10px !default;
-
-$faded-wide-offset: 80px !default;
-$faded-wide-blur-radius: 80px !default;
-$faded-wide-spread-radius: 28px !default;
-
-.faded {
-    position: relative;
-    display: inline-block;
-    color: white;
-
-    &:after {
-        content: "";
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-collapse: separate;
-    }
-
-    @include faded($faded-offset, $faded-blur-radius, $faded-spread-radius);
-
-    &.faded-narrow {
-        @include faded($faded-narrow-offset, $faded-narrow-blur-radius, $faded-narrow-spread-radius);
-    }
-
-    &.faded-wide {
-        @include faded($faded-wide-offset, $faded-wide-blur-radius, $faded-wide-spread-radius);
+@media (min-width: 1921px) and (max-width:2560px) {
+    .error-note{
+        width: 300ch;
+        height: 100vh;
+        padding-top: 10%;
     }
 }
+
+@media (min-width: 1281px) and (max-width:1441px) {
+    .error-note{
+        width: 300ch;
+        height: 100vh;
+        padding-top: 05%;
+    }
+    .empty{
+        height: 70%;
+    }
+}
+
+  @media (min-width: 1025px) and (max-width: 1280px) {
+  
+    //CSS
+    
+  }
+
+  @media (min-width: 768px) and (max-width: 1025px) {
+    .error-note{
+        padding: 10%;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    
+    //CSS
+    
+  }
+
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+    
+    
+    
+  }
+  
+
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+    .error-note{
+        margin-top: 10%;
+    }
+    .empty{
+        border: 1px solid red;
+        margin-left: 0;
+        transform: translateX(-20%);
+    }
+  }
+

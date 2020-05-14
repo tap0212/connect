@@ -303,6 +303,7 @@ function Step1(props) {
             value={props.title}
             className="add-input" 
             type="text"
+            maxLength="40"
             placeholder="Event Title"
         />
         <textarea
@@ -312,6 +313,7 @@ function Step1(props) {
             className="add-input"
             cols="30" 
             rows="5"
+            maxLength="250"
             placeholder="Event Description"
         />
         <input
@@ -320,6 +322,7 @@ function Step1(props) {
             value={props.venue}
             className="add-input" 
             type="text"
+            maxLength="60"
             placeholder="Event Venue"
         />
         <select

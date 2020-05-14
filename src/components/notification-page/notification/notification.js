@@ -125,6 +125,7 @@ export default class  Notification extends React.Component {
                         return (
                             <Grid item xs={12}  md={4}>
                                 <Link 
+                                className="event-link"
                                     to = {{
                                         pathname:`/event/${event._id}`,
                                         state: {
