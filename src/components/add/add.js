@@ -106,12 +106,24 @@ const geolocateStyle = {
         })
       }
 
+     
+
       previousButton() {
         let currentStep = this.state.currentStep;
-        if(currentStep !==1){
+        if(currentStep===2 && this.state.success===false){
           return (
             <button 
               className="previous" 
+              type="button" onClick={this._prev}>
+            Previous
+            </button>
+          )
+        }
+        if(currentStep===2 && this.state.success===true){
+          return (
+            <button 
+              className="previousDisabled" 
+              disabled
               type="button" onClick={this._prev}>
             Previous
             </button>
@@ -122,10 +134,29 @@ const geolocateStyle = {
       
       nextButton(){
         let currentStep = this.state.currentStep;
-        if(currentStep <3){
+        if(currentStep <2){
           return (
             <button 
               className="next" 
+              type="button" onClick={this._next}>
+            Next
+            </button>        
+          )
+        }
+        if(currentStep===2 && this.state.success===false){
+          return (
+            <button 
+              className="nextDisabled"
+              disabled 
+              type="button" onClick={this._next}>
+            Next
+            </button>        
+          )
+        }
+        if(currentStep===2 && this.state.success===true){
+          return (
+            <button 
+              className="next"
               type="button" onClick={this._next}>
             Next
             </button>        

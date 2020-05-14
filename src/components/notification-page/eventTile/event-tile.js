@@ -17,7 +17,7 @@ import './event-tle.scss'
   render(){
     return (
       
-      <div style={{marginTop:"2%",flex:1,cursor:"pointer", maxWidth:"250px" , padding:"4%", fontFamily:"'Poppins', sans-serif" , backgroundColor:"#1E1E30", color:"white"}}>
+      <div style={{flex:1}} className="notification-tile-container">
         <div className="white">
           <h2 style={{textTransform:"uppercase", marginBottom:0, paddingBottom:0}}>{this.state.event.title}</h2>
               <span style={{display:"linear"}} className="link-span">

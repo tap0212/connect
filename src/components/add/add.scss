@@ -101,6 +101,30 @@ $f1: 'Poppins', sans-serif;
     margin-top: 3%;
     cursor: pointer;
 }
+
+.next:hover, .next:active{
+    font-size: 1.2em;
+    color: white;
+    border-radius: 5px;
+    background-color: $dark;
+    padding: 1.5%;
+    margin-right: 20%;
+    float: right;
+    margin-top: 3%;
+    cursor: pointer;
+}
+
+.nextDisabled{
+    font-size: 1.2em;
+    color: white;
+    border-radius: 5px;
+    background-color: $dark;
+    padding: 1.5%;
+    margin-right: 20%;
+    float: right;
+    margin-top: 3%;
+    cursor: none;
+}
 .previous{
     font-size: 1.2em;
     color: white;
@@ -110,6 +134,28 @@ $f1: 'Poppins', sans-serif;
     margin-top: 3%;
     margin-left: 5%;
     cursor: pointer;
+}
+
+.previous:disabled, .previous:active{
+    font-size: 1.2em;
+    color: white;
+    border-radius: 5px;
+    background-color: $dark;
+    padding: 1.5%;
+    margin-top: 3%;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.previousDisabled{
+    font-size: 1.2em;
+    color: white;
+    border-radius: 5px;
+    background-color: $dark;
+    padding: 1.5%;
+    margin-top: 3%;
+    margin-left: 5%;
+    cursor: none;
 }
 
 .map-container{

@@ -1,13 +1,13 @@
-.popup-image-container {
-  padding: 15px 15px 15px 15px;
-  margin: 20px 20px 20px 20px;
-  overflow: visible;
-  position: relative;
-}
-.close {
-  position: absolute;
-  color: white;
-  top: -10px;
-  right: -10px;
+.notification-tile-container {
+  margin-top: 2%;
+  flex: 1;
   cursor: pointer;
+  min-width: 250px;
+  padding: 4%;
+  font-family: "Poppins, sans-serif";
+  color: #3f3d56;
+  border-radius: 31px;
+  background: #e6e6e6;
+  box-shadow: 22px 22px 44px #c4c4c4, -22px -22px 44px #ffffff;
+  height: 20vh;
 }
