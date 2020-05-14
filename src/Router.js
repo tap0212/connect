@@ -8,7 +8,7 @@ import Login from './components/authentication/login/login.component'
 import Add from './components/add/add'
 import Home from './components/home/home'
 import Profile from './components/profile/profile'
-
+import Event from './components/notification-page/popup/popup'
 const Routes = () => {
     return (
             <BrowserRouter>
@@ -19,6 +19,7 @@ const Routes = () => {
                 <Route path='/login' exact component={Login}></Route>
                 <PrivateRoutes path='/add' exact component={Add}></PrivateRoutes>
                 <PrivateRoutes path="/profile" exact component={Profile}/>
+                <PrivateRoutes path="/event/:id" exact component={Event} />
             </Switch>
         </BrowserRouter>
     )

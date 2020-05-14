@@ -1,110 +1,118 @@
-$black: #010103;
-$grey: #1F2833;
-$white:#C5C6C7;
-$bright:#66FCF1;
-$dull:#45A29E;
-
-// font-family: 'Rock Salt', cursive;
-// font-family: 'Work Sans', sans-serif;
-
-.popup-container{
-    flex: 1;
-    background-color:$black;
+$white:#E6E6E6;
+$dark:#3F3D56;
+$blue:#6C63FE;
+.event-container{
+    background-color:$white;
+    overflow-y: hidden;
+    height: 100vh;
 }
-
-.popup-name{
-    font-family: 'Rock Salt', cursive;
-    color: $bright;
-    font-size: 1.5em;
-    margin-top: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-bottom: 0;    
-}
-
-.popup-description{
-    color: $white;
-    font-family: 'Work Sans', sans-serif;
-    line-height: 1.2;
-    font-weight: 600;
-}
-
-.popup-location, .popup-age, .popup-breed{
-    text-align: right;
-    font-family: 'Rock Salt', cursive;
-    padding-top: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-top: 0;
-    font-size: 1.2em;
-    font-weight: 400;
-    color: $dull;
-}
-
-.form-link-container{
+.event-svg{
     margin-top: 10%;
-    margin-left: 30%;
-    color: $white;
-    text-decoration: none;
 }
 
-.form-link{
-    margin-top: 20%;
-    font-size: 1.6em;
-    border: 2px solid $dull;
-    text-decoration: none;
-    cursor: pointer;
-    color: $white;
-    font-weight: 600;
-    font-family: 'Work Sans', sans-serif;
-    padding: 4%;
-}
-.form-link:active, .form-link:hover{
-    color: $black;
-    background-color: $bright;
-    text-decoration: none;
+.event-card{
+    height: 70vh;
+    width: 98%;
+    margin-left: 15ch;
+    margin-top: 15vh;
+   overflow: hidden;
+   border-radius: 50px;
+   background: #E6E6E6;
+   box-shadow:  41px 41px 82px #c4c4c4, 
+                -41px -41px 82px #ffffff;
+   
 }
 
-.popup-container{
-    border-radius: 10px;
-    color: $black;
+.event-svg-container{
+    overflow: hidden;
+    text-align: center;
+    margin-top: 5%;
+    width: 90%;
+}
+.event-svg{
+    width: 86%;
+    margin-left: 14%;
 }
 
- .close {
-    cursor: pointer;
-    position: absolute;
-    display: block;
-    padding: 2px 5px;
-    line-height: 20px;
-    right: -10px;
-    top: -10px;
-    font-size: 24px;
-    background: #ffffff;
-    border-radius: 18px;
-    border: 1px solid #cfcece;
+.event-sub-card{
+    padding: 2%;
+}
+
+@media (min-width: 1281px) and (max-width:1440px) {
+    .event-svg{
+        width: 80%;
+        margin-left: 14%;
+    }
+}
+
+  @media (min-width: 1025px) and (max-width: 1280px) {
+  
+    //CSS
+    
   }
 
-@media screen and (max-width: 600px) {
-    .popup-container{
-        height: 550px;
-        width: 76vw;
-        overflow: scroll;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .event-svg{
+        width: 70%;
+        margin-left: 28%;
     }
-    .form-link{
-        font-size: 1.1em;
-        overflow: hidden;
+    
+  }
+  
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    
+    //CSS
+    
+  }
 
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+    
+    .event-container{
+        overflow-y: scroll;
     }
-    .form-link-container{
-        margin-right: 10%;
-        margin-bottom: 5%;
+    .event-svg{
+        width: 80%;
     }
-}
+    
+  }
+  
 
-@media screen and (max-width: 375px){
-    .form-link{
-        font-size: 1em;
-        margin: 0;
-        padding: 0;
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+    .event-container{
+        overflow-y: scroll;
     }
-}
+    .event-card{
+        margin-top: 10%;
+        height: 75vh;
+        width: 90%;
+        margin-left: 2.5ch;
+    }
+    .event-svg{
+        transform: translateY(-30%);
+    }
+    .event-svg-container{
+        height: 60vh;
+    }
+  }
+
+
+
+
+// .image-container
+// {
+//     display:block;
+//     position:relative;
+// }
+
+// .image-container
+// {
+//     display:block;
+//     content:'';
+//     position:absolute;
+  
+//     -moz-box-shadow:inset 0px 0px 6px 6px rgba(255,255,255,1);
+//     -webkit-box-shadow:inset 0px 0px 6px 6px rgba(255,255,255,1);
+//     box-shadow:inset 0px 0px 6px 6px rgba(255,255,255,1);
+// }

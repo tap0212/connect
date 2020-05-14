@@ -7,6 +7,7 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 import Popup from "reactjs-popup";
 import Modal from '../popup/popup'
 import Tile from '../eventTile/event-tile'
+import {Link} from 'react-router-dom'
 import './notification.styles.scss'
 
 export default class  Notification extends React.Component {
@@ -123,10 +124,19 @@ export default class  Notification extends React.Component {
                     this.state.eventList5KM.map(event => {
                         return (
                             <Grid item xs={12}  md={4}>
-                                <Tile 
-                                locationList={this.state.locationList} 
-                                event={event}
-                                />
+                                <Link 
+                                    to = {{
+                                        pathname:`/event/${event._id}`,
+                                        state: {
+                                            event:event
+                                        }
+                                    }}
+                                >
+                                    <Tile 
+                                     locationList={this.state.locationList} 
+                                     event={event}
+                                    />
+                                </Link>
                             </Grid>
                         )
                     })
