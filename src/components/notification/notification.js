@@ -20,6 +20,7 @@ export default class  Notification extends React.Component {
             eventList10KM:[],
             locationList:[],
             distance5:true,
+            distance10:false,
 
         }
         this.getLocation = this.getLocation.bind(this)
@@ -92,8 +93,7 @@ export default class  Notification extends React.Component {
                             const distance = this.distance(location.latitude, location.longitude, this.state.latitude, this.state.longitude)
                             if(distance<=5){
                                 this.setState({
-                                    eventList5KM:[...this.state.eventList5KM, listEvent]
-                                })
+                                    eventList5KM:[...this.state.eventList5KM, listEvent]                                })
                             }
                             if(distance<=10){
                                 this.setState({
@@ -114,8 +114,17 @@ export default class  Notification extends React.Component {
             }
             else{
                 return (
+                    
                     this.state.eventList5KM.map(event => {
-                        return <EventTile event={event}/>
+                        return (
+                            <Grid item xs={12}  md={4}>
+                                <EventTile 
+                               
+                                locationList={this.state.locationList} 
+                                event={event}
+                                />
+                            </Grid>
+                        )
                     })
                 )
             }
@@ -128,10 +137,25 @@ export default class  Notification extends React.Component {
             else{
                 return (
                     this.state.eventList10KM.map(event => {
-                        return <EventTile event={event}/>
+                       return ( <Grid item xs={12}  md={4}>
+                            <EventTile 
+                            locationList={this.state.locationList} 
+                            
+                            event={event}
+                            />
+                        </Grid>)
                     })
                 )
             }
+        }
+    }
+
+    showDistance = () => {
+        if(this.state.distance5){
+            return <h2>Here's a list of Notifications in a radius of 5 Km.</h2>
+        }
+        else{
+            return <h2>Here's a list of Notifications in a radius of 10 Km.</h2>
         }
     }
 
@@ -141,7 +165,6 @@ export default class  Notification extends React.Component {
     return (
         <div className="home-container">
             <VNav/>
-            {console.log(this.state.eventList5KM)}
             <div className="home-content-container">
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
@@ -188,11 +211,13 @@ export default class  Notification extends React.Component {
                                     10KM
                                 </ToggleButton>
                         </div>
-                        <div>
+                        {this.showDistance()}
+                        <Grid container spacing={3}>
                         {
                             this.renderTile()
                         }
-                        </div>
+                        </Grid>
+                    
                     </Grid>
                     <Grid  item xs={12} sm={6}>
                     <ReactBingmaps 

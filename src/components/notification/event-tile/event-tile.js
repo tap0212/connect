@@ -1,30 +1,39 @@
-import React from 'react'
-import './event-tile.scss'
+import React from 'react';
 
-class  Event extends React.Component {
-    constructor(props){
-        super(props)
-            this.state = {
-                
-            }
-        
+import { Link } from 'react-router-dom';
+
+
+ class Tile extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      event:props.event,
+      longitude:null,
+      latitude:null
     }
+  }
 
-    
-    render(){
-        
+  
+
+  render(){
     return (
-        
-        <div className="event-tile">
-            <h1 className="event-title">{this.props.event.title}</h1>
-            <h3 className="name">{this.props.event.name}</h3>
-            <span className="category-name">Category: {this.props.event.category.name}</span>
-            <span className="event-venue">Venue: {this.props.event.venue}</span>
-            <br/>
-            <span className="event-phone">Contact At: {this.props.event.phone}</span>
+      
+      <div style={{marginTop:"2%",flex:1,cursor:"pointer", maxWidth:"250px" , padding:"4%", fontFamily:"'Poppins', sans-serif" , backgroundColor:"#1E1E30", color:"white"}}>
+        <div className="white">
+          <h2 style={{textTransform:"uppercase", marginBottom:0, paddingBottom:0}}>{this.state.event.title}</h2>
+              <span style={{display:"linear"}} className="link-span">
+                <strong >{this.state.event.category.name}</strong>
+              </span>
+        </div>  
+        <div>
+          <p className="white">
+            <strong>Venue  </strong>:  
+            {this.state.event.venue}
+          </p>
         </div>
-    )
-    }
+      </div>
+    );
+  }
 }
 
-export default Event
+export default Tile
