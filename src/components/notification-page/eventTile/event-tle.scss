@@ -11,44 +11,14 @@ $blue:#6C63FE;
   font-family:"Poppins, sans-serif";
   color:$dark;
   border-radius: 31px;
-background: #E6E6E6;
-box-shadow:  22px 22px 44px #c4c4c4, 
+  background: #E6E6E6;
+  box-shadow:  22px 22px 44px #c4c4c4, 
              -22px -22px 44px #ffffff;
   height: 20vh;
 }
 
 
-@media (min-width: 1281px) and (max-width:1440px) {
-    
-}
 
-  @media (min-width: 1025px) and (max-width: 1280px) {
-  
-    //CSS
-    
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-   
-    
-  }
-  
-  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    
-    //CSS
-    
-  }
-
-  
-  @media (min-width: 481px) and (max-width: 767px) {
-    
-    
-    
-  }
-  
-
-  
-  @media (min-width: 320px) and (max-width: 480px) {
-    
-  }
-
+// .noti-icons{
+//   color: $blue;
+// }

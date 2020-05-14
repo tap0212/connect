@@ -7,7 +7,7 @@ import Signup from './components/authentication/signup/signup.component'
 import Login from './components/authentication/login/login.component'
 import Add from './components/add/add'
 import Home from './components/home/home'
-import Profile from './components/profile/profile'
+import Profile from './components/profile-page/profile/profile'
 import Event from './components/notification-page/popup/popup'
 const Routes = () => {
     return (

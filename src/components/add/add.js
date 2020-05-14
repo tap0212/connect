@@ -94,7 +94,8 @@ const geolocateStyle = {
         let currentStep = this.state.currentStep
         currentStep = currentStep >= 2? 3: currentStep + 1
         this.setState({
-          currentStep: currentStep
+          currentStep: currentStep,
+          success:false
         })
       }
         
@@ -384,7 +385,7 @@ function Step1(props) {
             className="add-select"
             placeholder="User Name"
             >
-            <option>User Name</option>
+            <option>Confirm Name</option>
                 <option  value={user._id}>
                     {user.name}
                 </option>
@@ -394,8 +395,11 @@ function Step1(props) {
             name="phone"
             value={props.phone}
             className="add-input" 
-            type="number"
-            placeholder="Phone Number"
+            type="tel"
+            pattern="^\d{10}$"
+            title="Enter a valid 10 digit Mobile Number"
+            placeholder="Contact Number"
+            maxLength="10"
         />
         
         <input

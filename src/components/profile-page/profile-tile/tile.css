@@ -1,0 +1,9 @@
+.profile-tile-container {
+  flex: 1;
+  max-width: 345px;
+  padding: 4%;
+  font-family: "Poppins", sans-serif;
+  background-color: #1e1e30;
+  color: white;
+  box-shadow: #e6e6e6;
+}

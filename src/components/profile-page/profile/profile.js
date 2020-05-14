@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import VNav from '../Navbar/verticalNav/vNav.component'
+import VNav from '../../Navbar/verticalNav/vNav.component'
 import {Link} from 'react-router-dom'
-import {getEvents, getAllLocations, deleteEvent} from '../add/apicalls'
+import {getEvents, getAllLocations, deleteEvent} from '../../add/apicalls'
 import './profile.scss'
-import { isAuthenticated } from '../../APICalls/auth'
-import EventTile from './tile'
-import {ReactComponent as Empty} from '../../assets/emtysvg.svg'
+import { isAuthenticated } from '../../../APICalls/auth'
+import EventTile from '../profile-tile/tile'
+import {ReactComponent as Empty} from '../../../assets/emtysvg.svg'
 import Grid from '@material-ui/core/Grid';
 
 const {user, token} = isAuthenticated()
