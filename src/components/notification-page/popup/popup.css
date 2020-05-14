@@ -1,0 +1,94 @@
+.popup-container {
+  flex: 1;
+  background-color: #010103;
+}
+.popup-name {
+  font-family: "Rock Salt", cursive;
+  color: #66fcf1;
+  font-size: 1.5em;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.popup-description {
+  color: #c5c6c7;
+  font-family: "Work Sans", sans-serif;
+  line-height: 1.2;
+  font-weight: 600;
+}
+.popup-location,
+.popup-age,
+.popup-breed {
+  text-align: right;
+  font-family: "Rock Salt", cursive;
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-size: 1.2em;
+  font-weight: 400;
+  color: #45a29e;
+}
+.form-link-container {
+  margin-top: 10%;
+  margin-left: 30%;
+  color: #c5c6c7;
+  text-decoration: none;
+}
+.form-link {
+  margin-top: 20%;
+  font-size: 1.6em;
+  border: 2px solid #45a29e;
+  text-decoration: none;
+  cursor: pointer;
+  color: #c5c6c7;
+  font-weight: 600;
+  font-family: "Work Sans", sans-serif;
+  padding: 4%;
+}
+.form-link:active,
+.form-link:hover {
+  color: #010103;
+  background-color: #66fcf1;
+  text-decoration: none;
+}
+.popup-container {
+  border-radius: 10px;
+  color: #010103;
+}
+.close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+@media screen and (max-width: 600px) {
+  .popup-container {
+    height: 550px;
+    width: 76vw;
+    overflow: scroll;
+  }
+  .form-link {
+    font-size: 1.1em;
+    overflow: hidden;
+  }
+  .form-link-container {
+    margin-right: 10%;
+    margin-bottom: 5%;
+  }
+}
+@media screen and (max-width: 375px) {
+  .form-link {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+  }
+}

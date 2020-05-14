@@ -1,0 +1,110 @@
+$black: #010103;
+$grey: #1F2833;
+$white:#C5C6C7;
+$bright:#66FCF1;
+$dull:#45A29E;
+
+// font-family: 'Rock Salt', cursive;
+// font-family: 'Work Sans', sans-serif;
+
+.popup-container{
+    flex: 1;
+    background-color:$black;
+}
+
+.popup-name{
+    font-family: 'Rock Salt', cursive;
+    color: $bright;
+    font-size: 1.5em;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;    
+}
+
+.popup-description{
+    color: $white;
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.popup-location, .popup-age, .popup-breed{
+    text-align: right;
+    font-family: 'Rock Salt', cursive;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: $dull;
+}
+
+.form-link-container{
+    margin-top: 10%;
+    margin-left: 30%;
+    color: $white;
+    text-decoration: none;
+}
+
+.form-link{
+    margin-top: 20%;
+    font-size: 1.6em;
+    border: 2px solid $dull;
+    text-decoration: none;
+    cursor: pointer;
+    color: $white;
+    font-weight: 600;
+    font-family: 'Work Sans', sans-serif;
+    padding: 4%;
+}
+.form-link:active, .form-link:hover{
+    color: $black;
+    background-color: $bright;
+    text-decoration: none;
+}
+
+.popup-container{
+    border-radius: 10px;
+    color: $black;
+}
+
+ .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+  }
+
+@media screen and (max-width: 600px) {
+    .popup-container{
+        height: 550px;
+        width: 76vw;
+        overflow: scroll;
+    }
+    .form-link{
+        font-size: 1.1em;
+        overflow: hidden;
+
+    }
+    .form-link-container{
+        margin-right: 10%;
+        margin-bottom: 5%;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .form-link{
+        font-size: 1em;
+        margin: 0;
+        padding: 0;
+    }
+}

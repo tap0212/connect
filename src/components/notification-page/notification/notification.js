@@ -1,10 +1,12 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
-import VNav from '../Navbar/verticalNav/vNav.component'
-import {getEvents, getAllLocations} from '../add/apicalls'
+import VNav from '../../Navbar/verticalNav/vNav.component'
+import {getEvents, getAllLocations} from '../../add/apicalls'
 import { ReactBingmaps } from 'react-bingmaps';
-import EventTile from './event-tile/event-tile'
 import ToggleButton from '@material-ui/lab/ToggleButton';
+import Popup from "reactjs-popup";
+import Modal from '../popup/popup'
+import Tile from '../eventTile/event-tile'
 import './notification.styles.scss'
 
 export default class  Notification extends React.Component {
@@ -21,6 +23,7 @@ export default class  Notification extends React.Component {
             locationList:[],
             distance5:true,
             distance10:false,
+
 
         }
         this.getLocation = this.getLocation.bind(this)
@@ -105,6 +108,8 @@ export default class  Notification extends React.Component {
                 })
             })
         })
+
+        
     }
 
     renderTile = () => {
@@ -118,8 +123,7 @@ export default class  Notification extends React.Component {
                     this.state.eventList5KM.map(event => {
                         return (
                             <Grid item xs={12}  md={4}>
-                                <EventTile 
-                               
+                                <Tile 
                                 locationList={this.state.locationList} 
                                 event={event}
                                 />
@@ -137,13 +141,18 @@ export default class  Notification extends React.Component {
             else{
                 return (
                     this.state.eventList10KM.map(event => {
-                       return ( <Grid item xs={12}  md={4}>
-                            <EventTile 
-                            locationList={this.state.locationList} 
-                            
-                            event={event}
-                            />
-                        </Grid>)
+                       return ( 
+                           <Popup modal trigger = {
+                               <Grid item xs={12}  md={4}>
+                                    <Tile 
+                                        locationList={this.state.locationList} 
+                                        event={event}
+                                    />
+                                 </Grid>
+                           }>
+                               {<Modal event={event}  />}
+                           </Popup>
+                       )
                     })
                 )
             }

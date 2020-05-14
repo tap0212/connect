@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {getEvents, getAllLocations, deleteEvent} from '../add/apicalls'
 import './profile.scss'
 import { isAuthenticated } from '../../APICalls/auth'
-import EventTile from '../notification/event-tile/event-tile'
+import eventTile from './tile'
 import {ReactComponent as Empty} from '../../assets/emtysvg.svg'
 import Tile from './tile';
 import Grid from '@material-ui/core/Grid';
@@ -65,7 +65,7 @@ class Profile extends Component {
             return (
                 this.state.eventList.map(event => {
                     return (<Grid className="events" item xs={12} sm={4} md={3}>
-                        <Tile event={event} handleDeleteEvent={this.handleDeleteEvent}/>
+                        <eventTile event={event} handleDeleteEvent={this.handleDeleteEvent}/>
                     </Grid>)
                 })
             )

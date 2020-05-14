@@ -165,3 +165,14 @@ export const updateLocation = (locationId, location) => {
   })
   .catch(err => console.log(err))
 }
+
+//get all user details
+export const getUserNames = () => {
+  return fetch(`${API}/users`, {
+    method: "GET"
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};

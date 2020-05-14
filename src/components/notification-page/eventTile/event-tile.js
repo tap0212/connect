@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-
+import './event-tle.scss'
 
  class Tile extends React.Component {
   constructor(props){
@@ -9,11 +8,11 @@ import { Link } from 'react-router-dom';
     this.state = {
       event:props.event,
       longitude:null,
-      latitude:null
+      latitude:null,
+      open:false,
     }
   }
 
-  
 
   render(){
     return (

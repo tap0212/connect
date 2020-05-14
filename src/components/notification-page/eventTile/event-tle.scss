@@ -1,0 +1,14 @@
+.popup-image-container{
+    padding: 15px 15px 15px 15px;
+  margin: 20px 20px 20px 20px;
+  overflow: visible;
+  position: relative;
+
+}
+.close{
+    position: absolute;
+    color: white;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
+}
