@@ -149,6 +149,10 @@
 .map-container {
   border: 2px solid red;
 }
+.back-link {
+  text-decoration: none;
+  color: #6c63fe;
+}
 @media only screen and (max-width: 600px) {
   .home-content-container {
     margin-left: 20px;

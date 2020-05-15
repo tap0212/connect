@@ -173,6 +173,10 @@ $f1: 'Poppins', sans-serif;
 .map-container{
     border: 2px solid red;
 }
+.back-link{
+    text-decoration: none;
+    color: $blue-accent;
+}
 
 @media only screen and (max-width: 600px) {
     .home-content-container{

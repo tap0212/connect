@@ -9,6 +9,7 @@ import Add from './components/add/add'
 import Home from './components/home/home'
 import Profile from './components/profile-page/profile/profile'
 import Event from './components/notification-page/popup/popup'
+import Edit from './components/profile-page/edit/edit'
 const Routes = () => {
     return (
             <BrowserRouter>
@@ -20,6 +21,7 @@ const Routes = () => {
                 <PrivateRoutes path='/add' exact component={Add}></PrivateRoutes>
                 <PrivateRoutes path="/profile" exact component={Profile}/>
                 <PrivateRoutes path="/event/:id" exact component={Event} />
+                <PrivateRoutes path="/edit" exact component={Edit}/>
             </Switch>
         </BrowserRouter>
     )

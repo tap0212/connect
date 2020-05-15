@@ -41,7 +41,13 @@ margin-left:50%;
           <h2 style={{textTransform:"uppercase"}}>{this.state.event.title}</h2>
               <span style={{display:"linear"}} className="link-span">
                 <strong >{this.state.event.category.name}</strong>
-                <Link style={{textDecoration:"none" ,float:"right", color:"white"}} to="/edit">
+                <Link style={{textDecoration:"none" ,float:"right", color:"white"}}
+                 to={{
+                   pathname:"/edit",
+                   state:{
+                     event:this.state.event
+                   }
+                 }}>
                   <EditTwoToneIcon style={{fontSize:35}} />
                 </Link>
               </span>

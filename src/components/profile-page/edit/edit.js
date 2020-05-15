@@ -1,8 +1,8 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
-import {getCategories, createEvent, createLocation} from './apicalls'
-import {isAuthenticated} from '../../APICalls/auth'
-import VNav from '../Navbar/verticalNav/vNav.component'
+import {getCategories, createEvent, createLocation, updateEvent} from '../../add/apicalls'
+import {isAuthenticated} from '../../../APICalls/auth'
+import VNav from '../../Navbar/verticalNav/vNav.component'
 import { css } from "@emotion/core";
 import {Link} from 'react-router-dom'
 import {Alert} from '@material-ui/lab'
@@ -10,9 +10,8 @@ import {PropagateLoader} from "react-spinners";
 import Geocoder from 'react-mapbox-gl-geocoder'
 import ReactMapGL, {GeolocateControl} from 'react-map-gl'
 import Lottie from 'react-lottie'
-import animationData from './933-success.json'
-import './add.scss'
-import { func } from 'prop-types';
+import animationData from '../../add/933-success.json'
+import './edit.scss'
 const override = css`
     display: block;
     margin-left:50%;
@@ -33,21 +32,21 @@ const geolocateStyle = {
     padding: '10px'
   };
    const {user, token} = isAuthenticated();
- class  Add extends React.Component {
+ class  Edit extends React.Component {
     
    
    
     constructor(props) {
         super(props)
         this.state = {
-            person:null,
-            title: "",
-            description: "",
-            phone: "",
-            venue:"",
+            person:this.props.location.state.event.person,
+            title: this.props.location.state.event.title,
+            description: this.props.location.state.event.description,
+            phone: this.props.location.state.event.phone,
+            venue:this.props.location.state.event.venue,
             photo:"",
-            categories: [],
-            category: "",
+            categories: "",
+            category: this.props.location.state.event.category.name,
             loading: false,
             success: false,
             error: "",
@@ -190,7 +189,7 @@ const geolocateStyle = {
           
           this.setState({error:"", loading:true});
         
-          createEvent(user._id, token, this.state.formData).then(data => {
+          updateEvent(this.props.location.state.event._id,user._id, token, this.state.formData).then(data => {
               console.log(data)
               if(data.error){
                   this.setState({ error:data.error, success:false})
@@ -237,8 +236,9 @@ const geolocateStyle = {
         }
         
         if(this.state.success===true){
-            return  <Alert   severity="success"><span className="flash">Event Created Successfully
-              <br/>Now Please click next and confirm your exact location
+            return  <Alert   severity="success"><span className="flash">Event Updated Successfully
+              <br/>Click next to confirm your location 
+              <br/> <Link className="back-link" to="/profile">Or Go Back</Link>
             </span></Alert>
         }
         if(this.state.loading === true){
@@ -272,7 +272,7 @@ const geolocateStyle = {
                         {this.Flash()}
                         {this.state.showForm && 
                         <div>
-                          <h1 className="add">Add Notification</h1>
+                          <h1 className="add">Edit Notification</h1>
                         <form onSubmit={this.onSubmit}>
                             <div className="form">
                             <Step1 
@@ -282,6 +282,7 @@ const geolocateStyle = {
                                 description={this.state.description}
                                 venue={this.state.venue}
                                 categories={this.state.categories}
+                                category={this.state.category}
                             />
                             <Step2 
                                 currentStep={this.state.currentStep} 
@@ -343,9 +344,6 @@ const geolocateStyle = {
                     </Grid>
                 </Grid>
             </div>
-            
-
-            
         </div>
     )
     }
@@ -390,7 +388,7 @@ function Step1(props) {
         className="add-select"
         placeholder="Category"
         >
-        <option>Choose Category</option>
+        <option selected>{props.category}</option>
         {props.categories &&
             props.categories.map((cate, index) => (
             <option key={index} value={cate._id}>
@@ -413,8 +411,8 @@ function Step1(props) {
             className="add-select"
             placeholder="User Name"
             >
-            <option>Confirm Name</option>
-                <option  value={user._id}>
+            
+                <option  selected value={user._id}>
                     {user.name}
                 </option>
         </select>
@@ -479,4 +477,4 @@ function Step1(props) {
 
   
 
-export default Add
+export default Edit

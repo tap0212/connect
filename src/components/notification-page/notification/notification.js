@@ -69,8 +69,8 @@ export default class  Notification extends React.Component {
         })
     }
 
-    componentDidMount(){
-        this.getLocation();
+    async componentDidMount(){
+        await this.getLocation();
         getEvents().then(list => {
             getAllLocations().then(locations => {
                 this.setState({locationList:locations})
