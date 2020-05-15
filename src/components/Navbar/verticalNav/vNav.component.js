@@ -64,18 +64,6 @@ const  VNav = ({history}) => {
                 </div>
             </Link>
             {Profile()}
-            {/* <Link className="link" to='/'>
-                <div className="tooltip">
-                <FaceTwoToneIcon className="icon" style={{ fontSize: 35 }}/>
-                <span class="tooltiptext">Profile</span>
-                </div>
-            </Link> */}
-            <Link className="link" to='/location' style={currentTab(history,"/location")}>
-                <div className="tooltip">
-                <EditLocationTwoToneIcon className="icon" style={{ fontSize: 35 }}/> 
-                <span class="tooltiptext">Location</span>
-                </div>
-            </Link>
             <Link className="link" to='/about' style={currentTab(history, "/about")}>
                 <div className="tooltip">
                 <InfoTwoToneIcon className="icon" style={{ fontSize: 35 }}/>
