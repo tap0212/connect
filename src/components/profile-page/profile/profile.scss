@@ -1,4 +1,3 @@
-$dark:#1E1E30;
 $navy:#254e7b;
 $blue:#5584b1;
 $lightBlue:#85c1e5;
@@ -6,7 +5,13 @@ $light:#cbe2ef;
 $cream:#f8f3ea;
 $blue-accent:#6C63FE;
 
+$white:#E6E6E6;
+$dark:#3F3D56;
+$blue:#6C63FE;
+
+
 $f1: 'Poppins', sans-serif;
+
 .root{
     float: 1;
 }
@@ -110,7 +115,6 @@ img{
         margin-top: 10%;
     }
     .empty{
-        border: 1px solid red;
         margin-left: 0;
         transform: translateX(-20%);
     }

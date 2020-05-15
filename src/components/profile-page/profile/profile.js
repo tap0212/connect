@@ -81,7 +81,7 @@ class Profile extends Component {
     render() {
         return (
             
-            <div>
+            <div className="profile-container">
             {console.log(this.state.eventList)}
                 <VNav/>
                 <div className="profile-container">
