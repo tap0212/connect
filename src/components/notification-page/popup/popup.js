@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import {getUserNames} from '../../add/apicalls'
-import ImageHelper from '../../profile/image'
+import ImageHelper from '../../profile-page/image'
 import { Grid } from '@material-ui/core';
 import {Link} from 'react-router-dom'
 import VNav from '../../Navbar/verticalNav/vNav.component'
 import {ReactComponent as EventSVG} from '../../../assets/location-event.svg'
+import BookmarksTwoToneIcon from '@material-ui/icons/BookmarksTwoTone';
+import LocationCityTwoToneIcon from '@material-ui/icons/LocationCityTwoTone';
+import FaceTwoToneIcon from '@material-ui/icons/FaceTwoTone';
+import ContactPhoneTwoToneIcon from '@material-ui/icons/ContactPhoneTwoTone';
+import AlternateEmailTwoToneIcon from '@material-ui/icons/AlternateEmailTwoTone';
+
 import './popup.scss'
 class Event extends Component {
     constructor(props) {
@@ -34,23 +40,22 @@ class Event extends Component {
                     <VNav/>
                     <div className="event-card-container">
                         <Grid container spacing={3}>
-                            <Grid item xs={12} sm={6} md={7}>
+                            <Grid className="card-grid" item xs={12} sm={6} md={7}>
                                 <div className="event-card">
                                     <Grid className="event-sub-card" container spacing={2}>
-                                        <Grid item xs={12} sm={7}>
-                                        <h2 className="event-name">{this.props.location.state.event.title}</h2>
-                                        <h3 className="event-category-name">{this.props.location.state.event.category.name}</h3>
-                                        <h4 className="event-venue">Venue: {this.props.location.state.event.venue}</h4>
-                                        <h4 className="event-author">Host : {this.state.userName}</h4>
-                                        <h4 className="phone">Contact : {this.props.location.state.event.phone}</h4>
-                                        <h4 className="email">Email: {this.state.email}</h4>
-                                        <p className="event-description">
-                                            <strong>Description:</strong>
-                                            <br/>
+                                        <Grid item xs={12} md={7}>
+                                        <h1 className="event-h1">{this.props.location.state.event.title}</h1>
+                                        <h2 className="event-h2"><BookmarksTwoToneIcon/>  {this.props.location.state.event.category.name}</h2>
+                                        <h3 className="event-h3"><LocationCityTwoToneIcon/>  {this.props.location.state.event.venue}</h3>
+                                        <h3 className="event-h3"><FaceTwoToneIcon/>  {this.state.userName}</h3>
+                                        <h3 className="event-h3"><ContactPhoneTwoToneIcon/>  {this.props.location.state.event.phone}</h3>
+                                        <h3 className="event-h3"><AlternateEmailTwoToneIcon/>  {this.state.email}</h3>
+                                        <h3 className="event-h3">Description:</h3>
+                                        <p className="event-p">
                                         {this.props.location.state.event.description}</p>
                                         </Grid>
 
-                                        <Grid item xs={12} sm={5}>
+                                        <Grid item xs={12} md={5}>
                                         <ImageHelper id="image" event={this.props.location.state.event}/>
                                         </Grid>
                                     </Grid>

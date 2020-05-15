@@ -7,14 +7,24 @@
   margin-top: 10%;
 }
 .event-card {
-  height: 70vh;
+  height: 65vh;
   width: 98%;
   margin-left: 15ch;
-  margin-top: 15vh;
+  margin-top: 20vh;
   overflow: hidden;
   border-radius: 50px;
   background: #e6e6e6;
   box-shadow: 41px 41px 82px #c4c4c4, -41px -41px 82px #ffffff;
+}
+.event-h1 {
+  font-size: 2.5em;
+}
+.event-h3,
+.event-h2 {
+  font-size: 1.4em;
+}
+.event-p {
+  font-size: 1.3em;
 }
 .event-svg-container {
   overflow: hidden;
@@ -34,11 +44,39 @@
     width: 80%;
     margin-left: 14%;
   }
+  .event-h1 {
+    font-size: 2.2em;
+  }
+  .event-h2 {
+    font-size: 1.3em;
+  }
+  .event-h3 {
+    font-size: 1.2em;
+  }
+  .event-p {
+    font-size: 1em;
+  }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
   .event-svg {
     width: 70%;
     margin-left: 28%;
+  }
+  .event-h1 {
+    margin-left: 5%;
+    font-size: 2em;
+  }
+  .event-h2 {
+    margin-left: 5%;
+    font-size: 1.1em;
+  }
+  .event-h3 {
+    margin-left: 5%;
+    font-size: 1em;
+  }
+  .event-p {
+    margin-left: 7%;
+    font-size: 1em;
   }
 }
 @media (min-width: 481px) and (max-width: 767px) {
