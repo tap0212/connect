@@ -2,15 +2,139 @@
 $white:#E6E6E6;
 $dark:#3F3D56;
 $blue:#6C63FE;
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 .home-container{
   background-color:$white;
   height: 100vh;
   overflow:hidden;
 }
 
-@media (min-width: 1281px) and (max-width:1440px) {
-    
+
+$dark:#1E1E30;
+$navy:#254e7b;
+$blue:#5584b1;
+$lightBlue:#85c1e5;
+$light:#cbe2ef;
+$cream:#f8f3ea;
+
+$f1: 'Poppins', sans-serif;
+
+.home{
+  height: 100vh;
+  margin-left: 90px;
+}
+.grid-left{
+  overflow: hidden;
+  //border: 2px solid red;
+  height: 100vh;
+  
+}
+.grid-right{
+  overflow: hidden;
+//  border: 2px solid black;
+background-color: $dark;
+color: white;
+  height: 100vh;
+}
+
+.grid-right-top{
+  overflow: hidden;
+ // border: 2px solid orange;
+  height: 50vh;
+}
+
+.grid-right-bottom{
+  overflow: hidden;
+ // border: 2px solid green;
+  height: 50vh;
+}
+
+.homeSVG{
+ // border: 2px solid yellow;
+  height: 45vh;
+  margin-bottom: 0;
+  margin-left: -14%;
+}
+
+.home-hero-text{
+  font-size: 3.5em;
+  margin-top: 10%;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 150%;
+  font-weight: 300;
+  margin-left: 3%;
+}
+
+.grid-right-head{
+  text-align: center;
+  font-weight: 200;
+  margin-top: 5%;
+  font-size: 2.4em;
+  margin-top: 15%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.how{
+  font-family: 'Montserrat', sans-serif;
+ font-size:2.2em ;
+ font-weight: 200; 
+ letter-spacing: -3px;
+ margin-top: 10%;
+ color: $lightBlue;
+ margin-left: 2%;
+}
+
+.hero-ul{
+  margin-top: 10%;
+}
+
+.hero-li{
+  font-family: 'Montserrat', sans-serif;
+  padding-left: 3%;
+  font-weight: 300;
+  list-style: none;
+  font-size: 1.3em;
+  margin-top: 5%;
+  line-height:90%;
+}
+
+
+
+@media screen and (min-width: 1400px) {
+  .home-hero-text{
+    font-size: 3em;
+  }
+  .homeSVG{
+    margin-left: -24%;
+    height: 40vh;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .homeSVG{
+    margin-left: -10%;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .home-hero-text{
+    font-size: 5.6em;
+  }
+  .homeSVG{
+    margin-left: 2%;
+    height: 50vh;
+    width: 90%;
+  }
+  .grid-right-head{
+    font-size: 3.8em;
+  }
+  .how{
+    font-size: 3em;
+  }
+  .hero-li{
+    font-size: 2.2em;
+  }
+  
 }
 
   @media (min-width: 1025px) and (max-width: 1280px) {
@@ -20,26 +144,110 @@ $blue:#6C63FE;
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
-   
+   .home-hero-text{
+     font-size: 2.1em;
+     margin-top: 20%;
+   }
+
+   .homeSVG{
+     height: 30vh;
+     width: 90ch;
+     margin-left: -15%;
+   }
     
   }
   
-  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    
-    //CSS
-    
-  }
+  @media (min-width: 558px) and (max-width: 959px)  {
+
+.home-container{
+  overflow:scroll;
+}
+.home-hero-text{
+  font-size: 2.5em;
+}
+.homeSVG{
+  width: 100%;
+  height: 50vh;
+  margin-left: 0;
+}
+.hero-li{
+  font-size: 1.4em;
+  padding-right: 10%;
+  padding-left: 0;
+}
+}
 
   
-  @media (min-width: 481px) and (max-width: 767px) {
-    
-    
-    
+  @media (max-width: 558px) {
+    .home-container{
+      overflow:scroll;
+    }    
   }
   
 
   
-  @media (min-width: 320px) and (max-width: 480px) {
-    
+  @media (min-width: 375px) and (max-width: 425px) {
+    .home{
+      margin-left: 0;
+    }
+    .grid-left{
+      height: 78vh;
+    }
+    .home-hero-text{
+      padding: 2%;
+      font-size: 2em;
+    }
+    .hero-li{
+      padding-left:0%;
+      margin-left: 0;
+    }
+    .grid-right-top{
+      height: 42vh;
+    }
+    .grid-right-bottom{
+      height: 40vh;
+    }
+    .homeSVG{
+      margin-left: 0%;
+      height: 40vh;
+      width: 55ch;
+
+    }
   }
 
+@media (max-width:375px)  {
+  .home{
+    margin-left: 0;
+  }
+  .grid-left{
+    height: 72vh;
+  }
+  .home-hero-text{
+    padding: 2%;
+    font-size: 1.8em;
+  }
+  .grid-right-top{
+    height: 39vh;
+  }
+  .grid-right-head{
+    font-size: 2em;
+  }
+  .grid-right-bottom{
+    height: 40vh;
+  }
+  .how{
+    font-size: 1.8em;
+  }
+  .hero-li{
+    font-size: 1.2em;
+  }
+  .hero-li{
+    padding-left: 1%;
+  }
+  .homeSVG{
+    margin-left: 0%;
+    height: 36vh;
+    width: 55ch;
+
+  }
+}

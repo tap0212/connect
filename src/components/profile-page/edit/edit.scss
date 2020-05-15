@@ -6,13 +6,12 @@ $light:#cbe2ef;
 $cream:#f8f3ea;
 $blue-accent:#6C63FE;
 $f1: 'Poppins', sans-serif;
-*{
-    font-family: $f1;
-}
+
 .home-content-container{
     flex:1;
     margin-left:100px;
     height: 100vh;
+    font-family: $f1;
 }
 
 

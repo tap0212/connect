@@ -1,8 +1,6 @@
-* {
-  font-family: "Poppins", sans-serif;
-}
 .home-content-container {
   flex: 1;
+  font-family: "Poppins", sans-serif;
   margin-left: 100px;
   height: 100vh;
 }
