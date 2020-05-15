@@ -69,7 +69,7 @@ export default class  Notification extends React.Component {
         })
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.getLocation();
         getEvents().then(list => {
             getAllLocations().then(locations => {
@@ -179,6 +179,15 @@ export default class  Notification extends React.Component {
         }
     }
 
+    Update() {
+        this.setState({ state: this.state });
+    }
+
+    callUpdate() {
+        setInterval(() =>{
+            this.Update();
+        }, 1000);
+    }
    
     render(){
         
@@ -251,7 +260,7 @@ export default class  Notification extends React.Component {
                     </Grid>
                 </Grid>
             </div>
-
+                        {this.callUpdate()}
         </div>
     )
     }

@@ -13,7 +13,8 @@ class Profile extends Component {
     constructor(props){
         super(props)
         this.state = {
-            eventList:[]
+            eventList:[],
+            deleting:false
         }
     }
 
@@ -34,9 +35,13 @@ class Profile extends Component {
     }
 
     handleDeleteEvent = (event) => {
+        this.setState({
+            deleting:true
+        })
         deleteEvent(event._id,user._id, token)
           .then(res => {
             this.updateStateAfterDeletion(this.state.eventList, event)
+            
             console.log(res)
           }).catch(err => console.log(err))
       }
@@ -46,9 +51,11 @@ class Profile extends Component {
           if(index > -1){
               eventList.splice(event,1)
               this.setState({
-                  eventList:eventList
+                  eventList:eventList,
+                  deleting:false
               })
           }
+          
       }
     renderTile(){
         if(this.state.eventList.length === 0){
@@ -64,7 +71,7 @@ class Profile extends Component {
             return (
                 this.state.eventList.map(event => {
                     return (<Grid className="events" item xs={12} sm={4} md={3}>
-                        <EventTile event={event} handleDeleteEvent={this.handleDeleteEvent}/>
+                        <EventTile event={event} deleting={this.state.deleting} handleDeleteEvent={this.handleDeleteEvent}/>
                     </Grid>)
                 })
             )

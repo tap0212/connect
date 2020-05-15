@@ -21,7 +21,7 @@ import './event-tle.scss'
       
       <div style={{flex:1}} className="notification-tile-container">
         <div className="white">
-          <h2 style={{textTransform:"uppercase", marginBottom:0, paddingBottom:0}}>{this.state.event.title}</h2>
+          <h3 style={{textTransform:"uppercase", marginBottom:0, paddingBottom:0}}>{this.state.event.title}</h3>
               <span style={{display:"linear"}} className="link-span">
                 <strong ><BookmarkTwoToneIcon className="noti-icons" style={{fontSize:24}} />{this.state.event.category.name}</strong>
               </span>

@@ -3,8 +3,16 @@ import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import ImageHelper from '../image';
 import { Link } from 'react-router-dom';
+import {PropagateLoader} from "react-spinners";
+import { css } from "@emotion/core";
 
 import './tile.scss'
+
+const override = css`
+display: block;
+margin-left:50%;
+`;
+
  class EventTile extends React.Component {
   constructor(props){
     super(props)
@@ -13,9 +21,22 @@ import './tile.scss'
     }
   }
 
+  Flash = () => {
+    
+    if(this.props.deleting === true){
+        return <PropagateLoader
+        css={override}
+        size={22}
+        color={"#66FCF1"}
+        loading={this.props.deleting}
+      />
+    }
+}
+
   render(){
     return (
       <div  className="profile-tile-container">
+      {this.Flash()}
         <div className="white">
           <h2 style={{textTransform:"uppercase"}}>{this.state.event.title}</h2>
               <span style={{display:"linear"}} className="link-span">

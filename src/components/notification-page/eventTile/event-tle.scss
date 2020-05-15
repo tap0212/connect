@@ -5,6 +5,7 @@ $blue:#6C63FE;
 .notification-tile-container{
   margin-top:2%;
   flex:1;
+  overflow: hidden;
   cursor:pointer;
   min-width:250px; 
   padding:4%; 

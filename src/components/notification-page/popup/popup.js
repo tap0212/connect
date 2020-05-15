@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {getUserNames} from '../../add/apicalls'
 import ImageHelper from '../../profile-page/image'
 import { Grid } from '@material-ui/core';
-import {Link} from 'react-router-dom'
 import VNav from '../../Navbar/verticalNav/vNav.component'
 import {ReactComponent as EventSVG} from '../../../assets/location-event.svg'
 import BookmarksTwoToneIcon from '@material-ui/icons/BookmarksTwoTone';
@@ -10,7 +9,7 @@ import LocationCityTwoToneIcon from '@material-ui/icons/LocationCityTwoTone';
 import FaceTwoToneIcon from '@material-ui/icons/FaceTwoTone';
 import ContactPhoneTwoToneIcon from '@material-ui/icons/ContactPhoneTwoTone';
 import AlternateEmailTwoToneIcon from '@material-ui/icons/AlternateEmailTwoTone';
-
+import ScrollArea from 'react-scrollbar'
 import './popup.scss'
 class Event extends Component {
     constructor(props) {
@@ -41,6 +40,7 @@ class Event extends Component {
                     <div className="event-card-container">
                         <Grid container spacing={3}>
                             <Grid className="card-grid" item xs={12} sm={6} md={7}>
+                                
                                 <div className="event-card">
                                     <Grid className="event-sub-card" container spacing={2}>
                                         <Grid item xs={12} md={7}>
