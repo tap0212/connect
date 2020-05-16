@@ -79,10 +79,7 @@ function Login() {
                    
                     <Grid item xs={12} sm={6}>
                         <div className="login-box">
-                             <div className="tab">
-                                 <Link to='/login' className="link1">Login</Link>
-                                 <Link to='/signup' className="link2">Signup</Link>
-                             </div>
+                             
                              <div className="avatar-container">
                                  <Avatar className="avatar"/>
                              </div>
@@ -109,7 +106,7 @@ function Login() {
                                
                                 <button 
                                 onClick={onSubmit}
-                                className="button">Log In
+                                className="login-button">Log In
                                 </button>
                             </form>
                             {performRedirect()}

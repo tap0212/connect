@@ -73,19 +73,19 @@ function Signup() {
         <div className="signup">
             <VNav/>
             <div className="signup-container">
-                <Grid container spacing={3}>
+                <Grid container spacing={0}>
                    
                     <Grid item xs={12} sm={6}>
                         <div className="signup-box">
-                             <div className="tab">
-                                 <Link to='/login' className="link1">Login</Link>
-                                 <Link to='/signup' className="link2">Signup</Link>
-                             </div>
+                             
                              <div className="avatar-container">
-                                 <Avatar className="avatar"/>
+                              <Avatar className="avatar"/>
                              </div>
                              {Flash()}
                             <form className="form">
+                                <span className="login">Already a user?
+                                <Link className="login-link" to="/login"> Login</Link>
+                                </span>
                                 <div className="form-control">
                                     <input
                                     onChange={handleChange("name")}
@@ -123,6 +123,7 @@ function Signup() {
                                 onClick={onSubmit}
                                 className="signup-button">Sign Up
                                 </button>
+                               
                             </form>
                         </div>
                     </Grid>

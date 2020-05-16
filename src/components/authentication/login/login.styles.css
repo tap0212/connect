@@ -1,62 +1,41 @@
 .login-container {
+  background-color: #e6e6e6;
+  border: 7px solid #6c63fe;
   flex: 1;
   overflow: hidden;
-  margin-left: 100px;
+  margin-left: 90px;
+  height: 98.5vh;
 }
 .login-box {
   width: 75%;
-  margin-top: 20%;
+  height: 70vh;
+  margin-top: 10%;
   margin-left: 10ch;
-  border-radius: 50px;
-  background: #f0ecff;
-  box-shadow: 41px 41px 82px #f0ecff, -41px -41px 82px #f0ecff;
 }
 .connect-container {
   overflow: hidden;
 }
-.connect {
-  padding-right: 0;
-  margin-left: 0;
-  width: 100%;
+.form {
+  height: 50%;
 }
 .avatar-container {
+  margin-top: 0;
+  margin-top: 0vh;
   text-align: center;
 }
 .avatar {
-  width: 30%;
-  padding-top: 0;
-  margin-top: -35%;
-  margin-bottom: -40%;
+  padding: 0;
+  height: 50%;
+  width: 35%;
+  overflow: hidden;
 }
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  .avatar {
-    height: 50vh;
-  }
-  .login-box {
-    margin-top: 40%;
-  }
-}
-.tab {
-  height: 5vh;
-  background-color: #1e1e30;
-  width: 100%;
-}
-.link1,
-.link2 {
-  text-decoration: none;
+.login-link {
   font-family: "Poppins", sans-serif;
-  color: #cbe2ef;
-  font-size: 1.6em;
+  text-decoration: none;
 }
-.link2 {
-  margin-top: 5px;
-  float: right;
-  padding-right: 15%;
-}
-.link1 {
-  margin-top: 5px;
-  float: left;
-  padding-left: 15%;
+.login {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
 }
 .input {
   background-color: #1e1e30;
@@ -81,10 +60,7 @@
   opacity: 0.8;
   font-size: 1.3em;
 }
-.note {
-  text-align: center;
-}
-.button {
+.login-button {
   font-size: 1.2em;
   font-weight: 100;
   color: white;
@@ -93,40 +69,68 @@
   border: 1px solid black;
   padding: 1.5%;
   margin-left: 5%;
-  margin-top: 3%;
   cursor: pointer;
+  margin-top: 10%;
 }
-.button:hover,
-.button:active {
+.connect {
+  width: 90%;
+}
+.login-button:hover,
+.login-button:active {
   color: white;
   background-color: #1e1e30;
 }
-@media only screen and (min-device-width: 360px) and (max-device-width: 640px) {
-  .login-container {
-    margin-left: 0;
-    position: fixed;
-    overflow: hidden;
-    padding-bottom: 0;
-  }
+@media screen and (min-width: 1400px) {
   .login-box {
-    height: 45vh;
-    margin-top: 7%;
-    margin-left: 10%;
-    margin-right: 10%;
-    width: 80%;
-    padding-bottom: 0;
-  }
-  .link2,
-  .link1 {
-    font-size: 1.4em;
-  }
-  .avatar {
-    height: 46vh;
+    margin-top: 20%;
   }
   .connect-container {
-    width: 99%;
+    margin-top: 15%;
   }
-  .connect {
+}
+@media screen and (min-width: 1900px) {
+  .login-box {
+    margin-top: 20%;
+  }
+  .connect-container {
+    margin-top: 20%;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .login-box {
+    margin-top: 50%;
+    width: 90%;
+  }
+  .connect-container {
+    margin-top: 20%;
+  }
+  .connect-container {
+    margin-top: 8%;
+  }
+}
+@media (max-width: 558px) {
+  .login-box {
+    height: 100vh;
+    margin-left: 5%;
+    margin-top: 2%;
+    width: 90%;
+    margin-top: 40%;
+    padding-bottom: 0;
+  }
+  .avatar {
     height: 40%;
+    width: 50%;
+  }
+  .input {
+    margin-top: 5%;
+  }
+  .note {
+    margin-top: 10%;
+    font-size: 1em;
+  }
+  .login-container {
+    margin-left: 0;
+    height: 100vh;
+    border: 7px solid #6c63fe;
   }
 }
