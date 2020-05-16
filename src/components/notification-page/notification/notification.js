@@ -2,12 +2,10 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid';
 import VNav from '../../Navbar/verticalNav/vNav.component'
 import {getEvents, getAllLocations} from '../../add/apicalls'
-import { ReactBingmaps } from 'react-bingmaps';
 import ToggleButton from '@material-ui/lab/ToggleButton';
-import Popup from "reactjs-popup";
-import Modal from '../popup/popup'
 import Tile from '../eventTile/event-tile'
 import {Link} from 'react-router-dom'
+
 import './notification.styles.scss'
 
 export default class  Notification extends React.Component {
@@ -17,14 +15,20 @@ export default class  Notification extends React.Component {
         this.state = {
             longitude:null,
             latitude:null,
-            infoboxesWithPushPins:[],
+            features:[],
             eventList:[],
             eventList5KM:[],
             eventList10KM:[],
             locationList:[],
             distance5:true,
             distance10:false,
-
+            viewport:{
+                latitude:20.5937,
+                longitude:78.9629,
+                zoom:4.5,
+                height:"100%",
+                width:"100%"
+            },
 
         }
         this.getLocation = this.getLocation.bind(this)
@@ -32,7 +36,7 @@ export default class  Notification extends React.Component {
     }
 
      distance(lat1, lon1, lat2, lon2) {
-        if ((lat1 == lat2) && (lon1 == lon2)) {
+        if ((lat1 === lat2) && (lon1 === lon2)) {
             return 0;
         }
         else {
@@ -77,17 +81,7 @@ export default class  Notification extends React.Component {
                 list.map(listElement => {
                     locations.map(e => {
                         if(listElement._id === e.event){
-                            const title = listElement.title
-                            const lat = e.latitude
-                            const long = e.longitude
-                            this.state.infoboxesWithPushPins.push({
-                                "location":[lat, long],
-                                "addHandler":"mouseover",
-                               "infoboxOption": { title: title, description: 'Infobox' },
-                                "pushPinOption":{ title: title, description: 'Pushpin' },
-                                "infoboxAddHandler": {"type" : "click", callback: this.callBackMethod },
-                                "pushPinAddHandler": {"type" : "click", callback: this.callBackMethod }
-                            })
+                            
                         }
                     })
                 })
@@ -110,13 +104,21 @@ export default class  Notification extends React.Component {
             })
         })
 
+
+
+        
         
     }
 
     renderTile = () => {
         if(this.state.distance5){
             if(this.state.eventList5KM.length === 0){
-                return <h2>There are no Notifications around you</h2>
+                return (
+                    <div>
+                         <h2>There are no Notifications around you</h2>
+                         <h2>Or try reloading and giving your exact location to the map</h2>
+                    </div>
+                 ) 
             }
             else{
                 return (
@@ -147,22 +149,33 @@ export default class  Notification extends React.Component {
 
         if(this.state.distance10){
             if(this.state.eventList10KM.length === 0){
-                return <h2>There are no Notifications around you</h2>
+                return (
+                   <div>
+                        <h2>There are no Notifications around you</h2>
+                        <h2>Or try reloading and giving your exact location to the map</h2>
+                   </div>
+                ) 
             }
             else{
                 return (
                     this.state.eventList10KM.map(event => {
                        return ( 
-                           <Popup modal trigger = {
-                               <Grid item xs={12}  md={4}>
-                                    <Tile 
-                                        locationList={this.state.locationList} 
-                                        event={event}
-                                    />
-                                 </Grid>
-                           }>
-                               {<Modal event={event}  />}
-                           </Popup>
+                        <Grid item xl={4} lg={6} md={6} sm={12} xs={12}>
+                        <Link 
+                        className="event-link"
+                            to = {{
+                                pathname:`/event/${event._id}`,
+                                state: {
+                                    event:event
+                                }
+                            }}
+                        >
+                            <Tile 
+                             locationList={this.state.locationList} 
+                             event={event}
+                            />
+                        </Link>
+                    </Grid>
                        )
                     })
                 )
@@ -179,20 +192,12 @@ export default class  Notification extends React.Component {
         }
     }
 
-    Update() {
-        this.setState({ state: this.state });
-    }
-
-    callUpdate() {
-        setInterval(() =>{
-            this.Update();
-        }, 1000);
-    }
    
     render(){
-        
+       
     return (
         <div className="home-container">
+
             <VNav/>
             <div className="home-content-container">
                 <Grid container spacing={3}>
@@ -249,18 +254,12 @@ export default class  Notification extends React.Component {
                     
                     </Grid>
                     <Grid  item xs={12} sm={6}>
-                    <ReactBingmaps 
-                        bingmapKey =  'ArzAufq-ny6rTgIo5CnHtOCDEQrlNRUmUulXgYQdr9DVwCnXgTOdX1SAUY6iejHO'
-                        center = {[this.state.latitude,this.state.longitude]}
-                        zoom = {11}
-                        className = "map"
-                        infoboxesWithPushPins = {this.state.infoboxesWithPushPins}
-                        > 
-                    </ReactBingmaps>
+                
+                    
                     </Grid>
                 </Grid>
             </div>
-                        {this.callUpdate()}
+                        
         </div>
     )
     }

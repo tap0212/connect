@@ -138,7 +138,7 @@ const geolocateStyle = {
       
       nextButton(){
         let currentStep = this.state.currentStep;
-        if(currentStep <2){
+        if(currentStep <3){
           return (
             <button 
               className="next" 
@@ -171,7 +171,7 @@ const geolocateStyle = {
 
 
        handleChange = name => event => {
-        const value = name == "photo" ? event.target.files[0] : event.target.value;
+        const value = name === "photo" ? event.target.files[0] : event.target.value;
         this.state.formData.set(name, value);
         
         this.setState({ [name]: value});

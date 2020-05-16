@@ -7,14 +7,41 @@ class Home extends React.Component {
 constructor(props){
     super(props)
     this.state = ({
-      
+      latitude:null,
+      longitude:null
     }) 
-}
+    // this.getLocation = this.getLocation.bind(this)
+    // this.getCoordinates = this.getCoordinates.bind(this);
+}   
 
+        // getLocation(){
+        //     if(navigator.geolocation){
+        //         navigator.geolocation.getCurrentPosition(this.getCoordinates)
+        //     }else{
+        //         alert('No Location')
+        //     }
+        // }
+
+        // getCoordinates(position){
+        //     this.setState({
+        //         latitude:position.coords.latitude,
+        //         longitude:position.coords.longitude
+        //     })
+        // }
+
+//    async componentWillMount(){
+//      await   this.getLocation()
+//         let latitude;
+//         let longitude;
+//      await   localStorage.setItem(latitude, this.state.latitude)
+//        await localStorage.setItem(longitude, this.state.longitude)
+//     }
 
     render() {
     return (
         <div className="home-container">
+        {/* {console.log(localStorage.getItem('latitude'))}
+        {console.log(localStorage.getItem('longitude'))} */}
             <VNav/>
             <div className="home">
                 <Grid container spacing={1}>
@@ -40,7 +67,7 @@ constructor(props){
                             <li className="hero-li">Let's you create private Notification for any geographical area only</li>
                             <li className="hero-li">Shows all the events real time on the map</li>
                             <li className="hero-li">Notifications can be created by any individual/government/non-governmental groups or societies</li>
-                            <li className="hero-li">Since each Notification is bound to a geographical area hence can only be seen a person in a specific radius</li>
+                            <li className="hero-li">Since each Notification is bound to a geographical area hence can only be seen by a person in a specific radius</li>
                         </ul>
                         </div>
                     </Grid>
