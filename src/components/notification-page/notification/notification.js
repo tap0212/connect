@@ -7,7 +7,12 @@ import Tile from '../eventTile/event-tile'
 import {Link} from 'react-router-dom'
 
 import './notification.styles.scss'
+import ReactMapboxGl, { Layer, Marker } from "react-mapbox-gl";
 
+const Map = ReactMapboxGl({
+  accessToken:
+    "pk.eyJ1IjoidGFwMDIxMiIsImEiOiJjangxbjNwa3IwYW9zNDlxZnAzdHNpZGxoIn0.7jVwdPa1rMpYPrDMkdz0Pg"
+});
 export default class  Notification extends React.Component {
 
     constructor(props){
@@ -15,7 +20,7 @@ export default class  Notification extends React.Component {
         this.state = {
             longitude:null,
             latitude:null,
-            features:[],
+            markers:[],
             eventList:[],
             eventList5KM:[],
             eventList10KM:[],
@@ -23,12 +28,11 @@ export default class  Notification extends React.Component {
             distance5:true,
             distance10:false,
             viewport:{
-                latitude:20.5937,
-                longitude:78.9629,
-                zoom:4.5,
+                center:[78.9629, 20.5937],
+                zoom:[4.5],
                 height:"100%",
                 width:"100%"
-            },
+            }
 
         }
         this.getLocation = this.getLocation.bind(this)
@@ -81,7 +85,10 @@ export default class  Notification extends React.Component {
                 list.map(listElement => {
                     locations.map(e => {
                         if(listElement._id === e.event){
-                            
+                            const item  = [e.longitude, e.latitude]
+                            this.setState({
+                                markers:[...this.state.markers,item ]
+                            })
                         }
                     })
                 })
@@ -126,6 +133,7 @@ export default class  Notification extends React.Component {
                     this.state.eventList5KM.map(event => {
                         return (
                             <Grid item xl={4} lg={6} md={6} sm={12} xs={12}>
+                            <h2>Here's a list of Notifications in a radius of 5 Km.</h2>
                                 <Link 
                                 className="event-link"
                                     to = {{
@@ -161,6 +169,7 @@ export default class  Notification extends React.Component {
                     this.state.eventList10KM.map(event => {
                        return ( 
                         <Grid item xl={4} lg={6} md={6} sm={12} xs={12}>
+                        <h2>Here's a list of Notifications in a radius of 10 Km.</h2>
                         <Link 
                         className="event-link"
                             to = {{
@@ -182,22 +191,10 @@ export default class  Notification extends React.Component {
             }
         }
     }
-
-    showDistance = () => {
-        if(this.state.distance5){
-            return <h2>Here's a list of Notifications in a radius of 5 Km.</h2>
-        }
-        else{
-            return <h2>Here's a list of Notifications in a radius of 10 Km.</h2>
-        }
-    }
-
    
     render(){
-       
     return (
         <div className="home-container">
-
             <VNav/>
             <div className="home-content-container">
                 <Grid container spacing={3}>
@@ -245,7 +242,7 @@ export default class  Notification extends React.Component {
                                     10KM
                                 </ToggleButton>
                         </div>
-                        {this.showDistance()}
+                      
                         <Grid container spacing={3}>
                         {
                             this.renderTile()
@@ -254,12 +251,25 @@ export default class  Notification extends React.Component {
                     
                     </Grid>
                     <Grid  item xs={12} sm={6}>
-                
-                    
+                    <Map
+                        className="map"
+                        style="mapbox://styles/mapbox/dark-v9"
+                        {...this.state.viewport}
+                    >
+                        {
+                            this.state.markers.map(marker => {
+                                return(
+                                    <Marker coordinates={[marker[0], marker[1]]} anchor="bottom">
+                                      <div className="mapMarkerStyle" />
+                                    </Marker>
+                                )
+                            })
+                        }
+                    </Map>
                     </Grid>
                 </Grid>
             </div>
-                        
+                     
         </div>
     )
     }

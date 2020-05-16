@@ -138,7 +138,7 @@ const geolocateStyle = {
       
       nextButton(){
         let currentStep = this.state.currentStep;
-        if(currentStep <3){
+        if(currentStep <2){
           return (
             <button 
               className="next" 
@@ -171,7 +171,7 @@ const geolocateStyle = {
 
 
        handleChange = name => event => {
-        const value = name === "photo" ? event.target.files[0] : event.target.value;
+        const value = name == "photo" ? event.target.files[0] : event.target.value;
         this.state.formData.set(name, value);
         
         this.setState({ [name]: value});
@@ -324,7 +324,7 @@ const geolocateStyle = {
                     <Grid className="map" item xs={12} sm={6}>
                         <React.Fragment className="map-container">
                         <ReactMapGL
-                        mapStyle="mapbox://styles/mapbox/streets-v11"
+                        mapStyle="mapbox://styles/mapbox/dark-v9"
                         className="map"
                         id="map"
                         {...mapAccess}
