@@ -64,12 +64,6 @@ const  VNav = ({history}) => {
                 </div>
             </Link>
             {Profile()}
-            <Link className="link" to='/about' style={currentTab(history, "/about")}>
-                <div className="tooltip">
-                <InfoTwoToneIcon className="icon" style={{ fontSize: 35 }}/>
-                <span class="tooltiptext">About</span>
-                </div>
-            </Link>
             {
                 isAuthenticated() && 
                         (
