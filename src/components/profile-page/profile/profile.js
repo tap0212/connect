@@ -3,7 +3,6 @@ import VNav from '../../Navbar/verticalNav/vNav.component'
 import {Link} from 'react-router-dom'
 import {getEvents, deleteEvent} from '../../add/apicalls'
 import './profile.scss'
-import { isAuthenticated } from '../../../APICalls/auth'
 import EventTile from '../profile-tile/tile'
 import {ReactComponent as Empty} from '../../../assets/emtysvg.svg'
 import Grid from '@material-ui/core/Grid';
@@ -14,7 +13,6 @@ const override = css`
     margin-left:50%;
     margin-top:20vh
    `;
-const {user, token} = isAuthenticated()
 class Profile extends Component {
     constructor(props){
         super(props)
@@ -34,7 +32,7 @@ class Profile extends Component {
          })
       await  getEvents().then(eventList => {
             eventList.map(event => {
-                if(event.person !== user._id){
+                if(event.person !== this.state.user._id){
                     this.setState({
                         eventList:""
                     })
@@ -51,7 +49,7 @@ class Profile extends Component {
         this.setState({
             deleting:true
         })
-        deleteEvent(event._id,user._id, token)
+        deleteEvent(event._id,this.state.user._id, this.state.token)
           .then(res => {
             this.updateStateAfterDeletion(this.state.eventList, event)
             
