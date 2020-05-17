@@ -1,7 +1,6 @@
 import React from 'react';
 import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
-import ImageHelper from '../image';
 import { Link } from 'react-router-dom';
 import {PropagateLoader} from "react-spinners";
 import { css } from "@emotion/core";
@@ -53,7 +52,7 @@ margin-left:50%;
               </span>
             <DeleteForeverTwoToneIcon style={{cursor:"pointer",float:"right", fontSize:35}} onClick={this.props.handleDeleteEvent.bind(this,this.state.event)}  />
         </div>
-        <ImageHelper event={this.state.event} className="profile-tile-image"/>
+        
         <div>
           <p className="white">
             <strong>Description</strong>: <br/>

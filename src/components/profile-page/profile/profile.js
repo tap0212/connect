@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import VNav from '../../Navbar/verticalNav/vNav.component'
-import {Link, Redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {getEvents, deleteEvent} from '../../add/apicalls'
 import './profile.scss'
 import { isAuthenticated } from '../../../APICalls/auth'
@@ -12,6 +12,7 @@ import { css } from "@emotion/core";
 const override = css`
     display: block;
     margin-left:50%;
+    margin-top:20vh
    `;
 const {user, token} = isAuthenticated()
 class Profile extends Component {
@@ -60,6 +61,7 @@ class Profile extends Component {
                   deleting:false
               })
           }
+          
       }
     renderTile(){
         if(this.state.eventList === null){
@@ -70,7 +72,7 @@ class Profile extends Component {
             loading={this.state.loading}
           />
         }
-        if(this.state.eventList.length === 0){
+        else if(this.state.eventList.length === 0){
             return (<div className="error-note">
                 <h3>You don't have created any Notification yet</h3>
                     <h3><Link className="link-profile" to="/add">Why don't you create one Now?</Link></h3>
@@ -81,6 +83,7 @@ class Profile extends Component {
             )
         }else{
             return (
+                
                 this.state.eventList.map(event => {
                     return (<Grid className="events" item xs={12} sm={4} md={3}>
                         <EventTile event={event} deleting={this.state.deleting} handleDeleteEvent={this.handleDeleteEvent}/>
