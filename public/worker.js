@@ -2,12 +2,8 @@ var CACHE_NAME = 'NOTIFY';
 var urlsToCache = [
   '/',
   '/home',
-  "/notification",
   "/signup",
-  "/login",
-  "/add",
-  "/profile",
-  "/edit"
+  "/login"
 ];
 
 // Install a service worker
