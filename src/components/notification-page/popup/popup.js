@@ -9,7 +9,6 @@ import LocationCityTwoToneIcon from '@material-ui/icons/LocationCityTwoTone';
 import FaceTwoToneIcon from '@material-ui/icons/FaceTwoTone';
 import ContactPhoneTwoToneIcon from '@material-ui/icons/ContactPhoneTwoTone';
 import AlternateEmailTwoToneIcon from '@material-ui/icons/AlternateEmailTwoTone';
-import ScrollArea from 'react-scrollbar'
 import './popup.scss'
 class Event extends Component {
     constructor(props) {

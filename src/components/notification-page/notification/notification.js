@@ -7,7 +7,8 @@ import Tile from '../eventTile/event-tile'
 import {Link} from 'react-router-dom'
 
 import './notification.styles.scss'
-import ReactMapboxGl, { Layer, Marker } from "react-mapbox-gl";
+import ReactMapboxGl, {  Marker } from "react-mapbox-gl";
+import { GeolocateControl } from 'react-map-gl';
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -122,7 +123,7 @@ export default class  Notification extends React.Component {
             if(this.state.eventList5KM.length === 0){
                 return (
                     <div>
-                         <h2>There are no Notifications around you</h2>
+                         <h2>There are no Notifications around you wait for a few seconds</h2>
                          <h2>Or try reloading and giving your exact location to the map</h2>
                     </div>
                  ) 
@@ -255,7 +256,13 @@ export default class  Notification extends React.Component {
                         className="map"
                         style="mapbox://styles/mapbox/dark-v9"
                         {...this.state.viewport}
-                    >
+                        onViewportChange={viewport => this.setState({viewport})}>
+
+                    >   
+                    {/* <GeolocateControl
+                        positionOptions={{enableHighAccuracy:true}}
+                        trackUserLocation={true}
+                    /> */}
                         {
                             this.state.markers.map(marker => {
                                 return(

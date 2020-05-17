@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import VNav from '../../Navbar/verticalNav/vNav.component'
-import {Link,Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import './login.styles.scss'
 import {signin, authenticate} from '../../../APICalls/auth'
 import { Grid } from '@material-ui/core'

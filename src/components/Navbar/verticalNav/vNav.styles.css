@@ -59,6 +59,12 @@
   .tooltip:hover .tooltiptext {
     visibility: visible;
   }
+  .logo-img {
+    bottom: 0;
+    margin-top: 30vh;
+    height: 90px;
+    width: 90px;
+  }
 }
 @media only screen and (max-width: 35em) {
   .vNav-container {

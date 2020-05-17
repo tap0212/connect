@@ -5,11 +5,8 @@ import AppsTwoToneIcon from '@material-ui/icons/AppsTwoTone';import './vNav.styl
 import NotificationsNoneTwoToneIcon from '@material-ui/icons/NotificationsNoneTwoTone';
 import PlusOneTwoToneIcon from '@material-ui/icons/PlusOneTwoTone';
 import FaceTwoToneIcon from '@material-ui/icons/FaceTwoTone';
-import EditLocationTwoToneIcon from '@material-ui/icons/EditLocationTwoTone';
-import InfoTwoToneIcon from '@material-ui/icons/InfoTwoTone';
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
-
-
+import Logo from './logo.jpg'
 const currentTab = (history, path) => {
 	if (history.location.pathname === path) {
 	  return { color: "#2ecc72" };
@@ -81,6 +78,8 @@ const  VNav = ({history}) => {
                             </Link>
                         )
             }
+
+            
             </div>
         </div>
     )

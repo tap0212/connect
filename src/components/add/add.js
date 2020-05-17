@@ -12,7 +12,6 @@ import ReactMapGL, {GeolocateControl} from 'react-map-gl'
 import Lottie from 'react-lottie'
 import animationData from './933-success.json'
 import './add.scss'
-import { func } from 'prop-types';
 const override = css`
     display: block;
     margin-left:50%;
@@ -171,7 +170,7 @@ const geolocateStyle = {
 
 
        handleChange = name => event => {
-        const value = name == "photo" ? event.target.files[0] : event.target.value;
+        const value = name === "photo" ? event.target.files[0] : event.target.value;
         this.state.formData.set(name, value);
         
         this.setState({ [name]: value});

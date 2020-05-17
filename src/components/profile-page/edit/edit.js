@@ -1,6 +1,6 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
-import {getCategories, createEvent, createLocation, updateEvent} from '../../add/apicalls'
+import {getCategories, createLocation, updateEvent} from '../../add/apicalls'
 import {isAuthenticated} from '../../../APICalls/auth'
 import VNav from '../../Navbar/verticalNav/vNav.component'
 import { css } from "@emotion/core";
@@ -170,7 +170,7 @@ const geolocateStyle = {
 
 
        handleChange = name => event => {
-        const value = name == "photo" ? event.target.files[0] : event.target.value;
+        const value = name === "photo" ? event.target.files[0] : event.target.value;
         this.state.formData.set(name, value);
         
         this.setState({ [name]: value});

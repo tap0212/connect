@@ -10,7 +10,7 @@ const ImageHelper = ({ event }) => {
       <span className="faded faded-left faded-right">
       <img
         src={imageurl}
-        alt="photo"
+        alt=""
         style={{ maxHeight: "100%", maxWidth: "100%" }}
         className=""
       />
