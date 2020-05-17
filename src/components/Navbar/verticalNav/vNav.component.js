@@ -6,7 +6,6 @@ import NotificationsNoneTwoToneIcon from '@material-ui/icons/NotificationsNoneTw
 import PlusOneTwoToneIcon from '@material-ui/icons/PlusOneTwoTone';
 import FaceTwoToneIcon from '@material-ui/icons/FaceTwoTone';
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
-import Logo from './logo.jpg'
 const currentTab = (history, path) => {
 	if (history.location.pathname === path) {
 	  return { color: "#2ecc72" };

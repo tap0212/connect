@@ -8,7 +8,6 @@ import {Link} from 'react-router-dom'
 
 import './notification.styles.scss'
 import ReactMapboxGl, {  Marker } from "react-mapbox-gl";
-import { GeolocateControl } from 'react-map-gl';
 import {PropagateLoader} from "react-spinners";
 import { css } from "@emotion/core";
 const override = css`

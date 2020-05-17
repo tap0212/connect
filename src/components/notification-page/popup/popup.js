@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {getUserNames} from '../../add/apicalls'
-import ImageHelper from '../../profile-page/image'
 import { Grid } from '@material-ui/core';
 import VNav from '../../Navbar/verticalNav/vNav.component'
 import {ReactComponent as EventSVG} from '../../../assets/location-event.svg'
@@ -52,10 +51,6 @@ class Event extends Component {
                                         <h3 className="event-h3">Description:</h3>
                                         <p className="event-p">
                                         {this.props.location.state.event.description}</p>
-                                        </Grid>
-
-                                        <Grid item xs={12} md={5}>
-                                        <ImageHelper id="image" event={this.props.location.state.event}/>
                                         </Grid>
                                     </Grid>
                                 </div>

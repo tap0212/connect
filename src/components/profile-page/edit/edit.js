@@ -7,13 +7,15 @@ import VNav from '../../Navbar/verticalNav/vNav.component'
 import {Link} from 'react-router-dom'
 import {Alert} from '@material-ui/lab'
 
-import Geocoder from 'react-mapbox-gl-geocoder'
 import ReactMapGL, {GeolocateControl} from 'react-map-gl'
 import Lottie from 'react-lottie'
 import animationData from '../../add/933-success.json'
 import './edit.scss'
 import {PropagateLoader} from "react-spinners";
 import { css } from "@emotion/core";
+import Step1 from '../../add/add-slide1'
+import Step2 from '../../add/add2-slide'
+import Step3 from '../../add/add3-slide'
 const override = css`
     display: block;
     margin-left:50%;
@@ -305,6 +307,8 @@ const geolocateStyle = {
                                 saveLocation={this.saveLocation}
                                 onSelected={this.onSelected}
                                 viewport={viewport}
+                                mapAccess={mapAccess}
+                                queryParams={queryParams}
                                 
                             />
 
@@ -334,7 +338,7 @@ const geolocateStyle = {
                     <Grid className="map" item xs={12} sm={6}>
                         <React.Fragment className="map-container">
                         <ReactMapGL
-                        mapStyle="mapbox://styles/mapbox/streets-v11"
+                        mapStyle="mapbox://styles/mapbox/dark-v9"
                         className="map"
                         id="map"
                         {...mapAccess}
@@ -358,133 +362,5 @@ const geolocateStyle = {
     }
 }
 
-function Step1(props) {
-    if (props.currentStep !== 1) {
-      return null
-    } 
-    return(
-      <div className="form-group">
-        <input 
-            onChange={props.handleChange("title")}
-            name="title"
-            value={props.title}
-            className="add-input" 
-            type="text"
-            maxLength="40"
-            placeholder="Event Title"
-        />
-        <textarea
-            onChange={props.handleChange("description")}
-            name="description"
-            value={props.description}
-            className="add-input"
-            cols="30" 
-            rows="5"
-            maxLength="250"
-            placeholder="Event Description"
-        />
-        <input
-            onChange={props.handleChange("venue")}
-            name="venue"
-            value={props.venue}
-            className="add-input" 
-            type="text"
-            maxLength="60"
-            placeholder="Event Venue"
-        />
-        <select
-        onChange={props.handleChange("category")}
-        className="add-select"
-        placeholder="Category"
-        >
-        <option selected>{props.category}</option>
-        {props.categories &&
-            props.categories.map((cate, index) => (
-            <option key={index} value={cate._id}>
-                {cate.name}
-            </option>
-            ))}
-        </select>
-      </div>
-    );
-  }
-  
-  function Step2(props) {
-    if (props.currentStep !== 2) {
-      return null
-    } 
-    return(
-      <div className="form-group">
-        <select
-            onChange={props.handleChange("person")}
-            className="add-select"
-            placeholder="User Name"
-            >
-            
-                <option  selected value={user._id}>
-                    {user.name}
-                </option>
-        </select>
-        <br/>
-        <input
-            onChange={props.handleChange("phone")}
-            name="phone"
-            value={props.phone}
-            className="add-input" 
-            type="tel"
-            pattern="^\d{10}$"
-            title="Enter a valid 10 digit Mobile Number"
-            placeholder="Contact Number"
-            maxLength="10"
-        />
-        
-        {/* <input
-            onChange={props.handleChange("photo")}
-            name="photo"
-            accept="image"
-            className="add-input" 
-            type="file"
-            placeholder="Choose an image (if any)"
-        /> */}
-        <button
-                type="submit"
-                className="add-button"
-            >
-                Create Notification
-            </button> 
-      </div>
-    );
-  }
-  
-  function Step3(props) {
-    if (props.currentStep !== 3) {
-      return null
-    } 
-    return(
-      <React.Fragment>
-      <div className="form-group">
-      <h3 className="location-h1">Start typing your location and select</h3>
-        <Geocoder
-            className="add-input"
-            {...mapAccess} 
-            onSelected={props.onSelected} 
-            viewport={props.viewport} 
-            hideOnSelect={true}
-            queryParams={queryParams}
-            />
-            
-              <button 
-              className="previous"
-              onClick={props.saveLocation}
-              >
-              Confirm Location</button>
-              
-      </div>
-      
-      </React.Fragment>
-    );
-  }
-
-  
 
 export default Edit
