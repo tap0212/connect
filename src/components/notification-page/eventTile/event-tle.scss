@@ -14,10 +14,14 @@ $blue:#6C63FE;
   background: #E6E6E6;
   box-shadow:  22px 22px 44px #c4c4c4, 
              -22px -22px 44px #ffffff;
-  height: auto;
+  height: 24vh;
 }
 
-
+@media only screen and (max-width:600px){
+  .notification-tile-container{
+    height: auto;
+  }
+}
 
 // .noti-icons{
 //   color: $blue;

@@ -9,5 +9,10 @@
   border-radius: 31px;
   background: #e6e6e6;
   box-shadow: 22px 22px 44px #c4c4c4, -22px -22px 44px #ffffff;
-  height: auto;
+  height: 24vh;
+}
+@media only screen and (max-width: 600px) {
+  .notification-tile-container {
+    height: auto;
+  }
 }
