@@ -57,7 +57,7 @@ color: white;
 }
 
 .home-hero-text{
-  font-size: 3.5em;
+  font-size: 3em;
   margin-top: 10%;
   font-family: 'Montserrat', sans-serif;
   line-height: 150%;
@@ -102,7 +102,7 @@ color: white;
 
 @media screen and (min-width: 1400px) {
   .home-hero-text{
-    font-size: 3em;
+    font-size: 2.5em;
   }
   .homeSVG{
     margin-left: -24%;
@@ -118,7 +118,7 @@ color: white;
 
 @media screen and (min-width: 1900px) {
   .home-hero-text{
-    font-size: 3.5em;
+    font-size: 3em;
   }
   .homeSVG{
     margin-left: 2%;
@@ -145,7 +145,7 @@ color: white;
 
   @media (min-width: 768px) and (max-width: 1024px) {
    .home-hero-text{
-     font-size: 2.1em;
+     font-size: 1.6em;
      margin-top: 20%;
    }
 
@@ -163,7 +163,7 @@ color: white;
   overflow:scroll;
 }
 .home-hero-text{
-  font-size: 2.5em;
+  font-size: 2em;
 }
 .homeSVG{
   width: 100%;
@@ -182,6 +182,32 @@ color: white;
     .home-container{
       overflow:scroll;
     }    
+    .home{
+      margin-left: 0;
+    }
+    .grid-left{
+      height: 78vh;
+    }
+    .home-hero-text{
+      padding: 2%;
+      font-size: 1.5em;
+    }
+    .hero-li{
+      padding-left:0%;
+      margin-left: 0;
+    }
+    .grid-right-top{
+      height: 42vh;
+    }
+    .grid-right-bottom{
+      height: 40vh;
+    }
+    .homeSVG{
+      margin-left: 0%;
+      height: 40vh;
+      width: 55ch;
+
+    }
   }
   
 
@@ -195,7 +221,7 @@ color: white;
     }
     .home-hero-text{
       padding: 2%;
-      font-size: 2em;
+      font-size: 1.5em;
     }
     .hero-li{
       padding-left:0%;
@@ -224,7 +250,7 @@ color: white;
   }
   .home-hero-text{
     padding: 2%;
-    font-size: 1.8em;
+    font-size: 1.3em;
   }
   .grid-right-top{
     height: 39vh;

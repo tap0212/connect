@@ -37,7 +37,7 @@ class Event extends Component {
                     <VNav/>
                     <div className="event-card-container">
                         <Grid container spacing={3}>
-                            <Grid className="card-grid" item xs={12} sm={6} md={7}>
+                            <Grid className="card-grid" item xs={12} sm={6} md={5}>
                                 
                                 <div className="event-card">
                                     <Grid className="event-sub-card" container spacing={2}>
@@ -55,7 +55,7 @@ class Event extends Component {
                                     </Grid>
                                 </div>
                             </Grid>
-                            <Grid className="event-svg-container" item xs={12} sm={6} md={5}>
+                            <Grid className="event-svg-container" item xs={12} sm={6} md={7}>
                                <EventSVG className="event-svg"/>
                             </Grid>
                         </Grid>

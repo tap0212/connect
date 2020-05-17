@@ -1,7 +1,6 @@
 .notification-tile-container {
   margin-top: 2%;
   flex: 1;
-  overflow: hidden;
   cursor: pointer;
   min-width: 250px;
   padding: 4%;
@@ -10,5 +9,5 @@
   border-radius: 31px;
   background: #e6e6e6;
   box-shadow: 22px 22px 44px #c4c4c4, -22px -22px 44px #ffffff;
-  height: 20vh;
+  height: 23vh;
 }

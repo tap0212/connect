@@ -11,10 +11,10 @@ $blue:#6C63FE;
 }
 
 .event-card{
-    height: 65vh;
+    height: auto;
     width: 98%;
     margin-left: 15ch;
-    margin-top: 20vh;
+    margin-top: 10vh;
    overflow: hidden;
    border-radius: 50px;
    background: #E6E6E6;
@@ -35,12 +35,13 @@ $blue:#6C63FE;
 .event-svg-container{
     overflow: hidden;
     text-align: center;
-    margin-top: 5%;
+    margin-top: 1%;
     width: 90%;
 }
 .event-svg{
-    width: 86%;
+    width: 70%;
     margin-left: 14%;
+    
 }
 
 .event-sub-card{
@@ -76,6 +77,12 @@ $blue:#6C63FE;
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
+    .event-card{
+        margin-top: 15vh;
+       height: auto;
+        width: 90%;
+        margin-left: 16ch;
+    }
     .event-svg{
         width: 70%;
         margin-left: 28%;
@@ -101,7 +108,7 @@ $blue:#6C63FE;
   
   @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
     
-    //CSS
+    
     
   }
 
@@ -122,10 +129,11 @@ $blue:#6C63FE;
   @media (min-width: 320px) and (max-width: 480px) {
     .event-container{
         overflow-y: scroll;
+        overflow-x: hidden;
     }
     .event-card{
         margin-top: 10%;
-       height: 70%;
+       height: auto;
         width: 90%;
         margin-left: 2.5ch;
     }
@@ -135,6 +143,23 @@ $blue:#6C63FE;
     .event-svg-container{
         height: 60vh;
     }
+    .event-h1{
+        padding-left: 3%;
+        font-size: 2em;
+    }
+    .event-h3, .event-h2{
+        padding-left: 3%;
+        font-size: 1.2em;
+        padding-top: 0;
+        margin-top: 0;
+    }
+    .event-p{
+        padding-left: 3%;
+        font-size:1em;
+        padding-top: 0;
+        margin-top: 0;
+    }
+    
   }
 
 
