@@ -31,7 +31,7 @@ const geolocateStyle = {
     marginTop:"60px",
     padding: '10px'
   };
-   const {user, token} = isAuthenticated();
+  const {user, token} = isAuthenticated();
  class  Add extends React.Component {
     
    
@@ -64,7 +64,9 @@ const geolocateStyle = {
             latitude:null,
             showForm:true,
             showSuccessMessage:false,
-            isStopped:false
+            isStopped:false,
+            user:"",
+            token:""
         }
 
         this.preload = this.preload.bind(this)
@@ -87,9 +89,14 @@ const geolocateStyle = {
         })
     }
 
-     componentDidMount(){
-        this.preload()
-        
+     async componentWillMount(){
+     await  this.preload()
+        // await isAuthenticated().then(res => console.log(res))
+        const jwt = JSON.parse(localStorage.getItem("jwt"))
+       this.setState({
+          user:jwt.user,
+          token:jwt.token
+        })
      }
 
      _next = () => {
@@ -137,6 +144,7 @@ const geolocateStyle = {
       
       nextButton(){
         let currentStep = this.state.currentStep;
+        console.log(currentStep)
         if(currentStep <2){
           return (
             <button 
@@ -165,7 +173,7 @@ const geolocateStyle = {
             </button>        
           )
         }
-        return null;
+        return <h1>hello</h1>;
       }
 
 
@@ -287,6 +295,7 @@ const geolocateStyle = {
                                 handleChange={this.handleChange}
                                 phone={this.state.phone}
                                 photo={this.state.photo}
+                                user={this.state.user}
                             />
                             <Step3 
                                 currentStep={this.state.currentStep} 
@@ -413,8 +422,8 @@ function Step1(props) {
             placeholder="User Name"
             >
             <option>Confirm Name</option>
-                <option  value={user._id}>
-                    {user.name}
+                <option  value={props.user._id}>
+                    {props.user.name}
                 </option>
         </select>
         <input
