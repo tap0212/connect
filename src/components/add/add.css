@@ -107,6 +107,7 @@
   color: white;
   border-radius: 5px;
   background-color: #1e1e30;
+  opacity: 0.5;
   padding: 1.5%;
   margin-right: 20%;
   float: right;
@@ -129,6 +130,7 @@
   color: white;
   border-radius: 5px;
   background-color: #1e1e30;
+  opacity: 0.5;
   padding: 1.5%;
   margin-top: 3%;
   margin-left: 5%;
@@ -143,9 +145,6 @@
   margin-top: 3%;
   margin-left: 5%;
   cursor: none;
-}
-.map-container {
-  border: 2px solid red;
 }
 @media only screen and (max-width: 600px) {
   .home-content-container {

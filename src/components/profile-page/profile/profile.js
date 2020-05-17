@@ -8,6 +8,8 @@ import {ReactComponent as Empty} from '../../../assets/emtysvg.svg'
 import Grid from '@material-ui/core/Grid';
 import {PropagateLoader} from "react-spinners";
 import { css } from "@emotion/core";
+
+
 const override = css`
     display: block;
     margin-left:50%;
@@ -17,14 +19,15 @@ class Profile extends Component {
     constructor(props){
         super(props)
         this.state = {
-            eventList:null,
+            eventList:[],
+            loading:true,
             deleting:false,
             user:"", 
             token:""
         }
     }
 
-   async  componentWillMount(){
+   async  componentDidMount(){
         const jwt = JSON.parse(localStorage.getItem("jwt"))
       await  this.setState({
            user:jwt.user,
@@ -32,14 +35,17 @@ class Profile extends Component {
          })
       await  getEvents().then(eventList => {
             eventList.map(event => {
-                if(event.person !== this.state.user._id){
+                if(eventList){
                     this.setState({
-                        eventList:""
+                        loading:false
                     })
-                }else{
+                }
+                if(event.person === this.state.user._id){
                     this.setState({
                         eventList:[...this.state.eventList,event]
                     })
+                }else{
+                   return null;
                 }
             })
         })
@@ -68,8 +74,10 @@ class Profile extends Component {
           }
           
       }
+
+
     renderTile(){
-        if(this.state.eventList === null){
+        if(this.state.loading === true){
             return <PropagateLoader
             css={override}
             size={40}

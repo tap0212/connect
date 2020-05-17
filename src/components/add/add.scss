@@ -130,6 +130,7 @@ $f1: 'Poppins', sans-serif;
     color: white;
     border-radius: 5px;
     background-color: $dark;
+    opacity: 0.5;
     padding: 1.5%;
     margin-right: 20%;
     float: right;
@@ -152,6 +153,7 @@ $f1: 'Poppins', sans-serif;
     color: white;
     border-radius: 5px;
     background-color: $dark;
+    opacity: 0.5;
     padding: 1.5%;
     margin-top: 3%;
     margin-left: 5%;
@@ -169,9 +171,6 @@ $f1: 'Poppins', sans-serif;
     cursor: none;
 }
 
-.map-container{
-    border: 2px solid red;
-}
 
 @media only screen and (max-width: 600px) {
     .home-content-container{

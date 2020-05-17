@@ -144,7 +144,6 @@ const geolocateStyle = {
       
       nextButton(){
         let currentStep = this.state.currentStep;
-        console.log(currentStep)
         if(currentStep <2){
           return (
             <button 
@@ -294,8 +293,8 @@ const geolocateStyle = {
                                 currentStep={this.state.currentStep} 
                                 handleChange={this.handleChange}
                                 phone={this.state.phone}
-                                photo={this.state.photo}
                                 user={this.state.user}
+                                buttonText={"Create Notification"}
                             />
                             <Step3 
                                 currentStep={this.state.currentStep} 
@@ -305,7 +304,7 @@ const geolocateStyle = {
                                 viewport={viewport}
                                 mapAccess={mapAccess}
                                 queryParams={queryParams}
-                                
+                               
                             />
 
                             <div className="nav">
@@ -332,7 +331,7 @@ const geolocateStyle = {
                         </div>
                     </Grid>
                     <Grid className="map" item xs={12} sm={6}>
-                        <React.Fragment className="map-container">
+                      
                         <ReactMapGL
                         mapStyle="mapbox://styles/mapbox/dark-v9"
                         className="map"
@@ -349,7 +348,7 @@ const geolocateStyle = {
                                 trackUserLocation={true}
                             />
                         </ReactMapGL>
-                        </React.Fragment>
+                       
                     </Grid>
                 </Grid>
             </div>

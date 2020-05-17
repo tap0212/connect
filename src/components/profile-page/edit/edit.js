@@ -10,7 +10,7 @@ import {Alert} from '@material-ui/lab'
 import ReactMapGL, {GeolocateControl} from 'react-map-gl'
 import Lottie from 'react-lottie'
 import animationData from '../../add/933-success.json'
-import './edit.scss'
+import '../../add/add.scss'
 import {PropagateLoader} from "react-spinners";
 import { css } from "@emotion/core";
 import Step1 from '../../add/add-slide1'
@@ -298,7 +298,7 @@ const geolocateStyle = {
                                 currentStep={this.state.currentStep} 
                                 handleChange={this.handleChange}
                                 phone={this.state.phone}
-                                photo={this.state.photo}
+                                buttonText={"Save Changes"}
                                 user={this.state.user}
                             />
                             <Step3 

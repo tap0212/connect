@@ -7,6 +7,7 @@ function Step2(props) {
     return(
       <div className="form-group">
         <select
+            required
             onChange={props.handleChange("person")}
             className="add-select"
             placeholder="User Name"
@@ -31,7 +32,7 @@ function Step2(props) {
                 type="submit"
                 className="add-button"
             >
-                Create Notification
+                {props.buttonText}
             </button> 
       </div>
     );
