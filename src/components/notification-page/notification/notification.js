@@ -133,9 +133,9 @@ export default class  Notification extends React.Component {
             if(this.state.distance5){
                 if(this.state.eventList5KM.length === 0){
                     return (
-                        <div>
-                             <h2>There are no Notifications around you wait for a few seconds</h2>
-                             <h2>Or try reloading and giving your exact location to the map</h2>
+                        <div class="error">
+                             <h2>There are no Notifications around you</h2>
+                            <h2>Have you agreed to the location permission of the browser?</h2>
                         </div>
                      ) 
                 }
@@ -284,10 +284,6 @@ export default class  Notification extends React.Component {
                         onViewportChange={viewport => this.setState({viewport})}>
 
                     >   
-                    {/* <GeolocateControl
-                        positionOptions={{enableHighAccuracy:true}}
-                        trackUserLocation={true}
-                    /> */}
                         {
                             this.state.markers.map(marker => {
                                 return(

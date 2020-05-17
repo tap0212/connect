@@ -19,6 +19,9 @@
 .event-link {
   text-decoration: none;
 }
+.error {
+  margin-left: 2.5%;
+}
 .mapMarkerStyle {
   background-image: url("./logo.png");
   background-size: cover;
