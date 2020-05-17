@@ -7,13 +7,18 @@ import { isAuthenticated } from '../../../APICalls/auth'
 import EventTile from '../profile-tile/tile'
 import {ReactComponent as Empty} from '../../../assets/emtysvg.svg'
 import Grid from '@material-ui/core/Grid';
-
+import {PropagateLoader} from "react-spinners";
+import { css } from "@emotion/core";
+const override = css`
+    display: block;
+    margin-left:50%;
+   `;
 const {user, token} = isAuthenticated()
 class Profile extends Component {
     constructor(props){
         super(props)
         this.state = {
-            eventList:[],
+            eventList:null,
             deleting:false
         }
     }
@@ -58,6 +63,14 @@ class Profile extends Component {
           
       }
     renderTile(){
+        if(this.state.eventList === null){
+            return <PropagateLoader
+            css={override}
+            size={40}
+            color={"#6C63FE"}
+            loading={this.state.loading}
+          />
+        }
         if(this.state.eventList.length === 0){
             return (<div className="error-note">
                 <h3>You don't have created any Notification yet</h3>

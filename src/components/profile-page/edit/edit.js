@@ -3,15 +3,17 @@ import Grid from '@material-ui/core/Grid';
 import {getCategories, createLocation, updateEvent} from '../../add/apicalls'
 import {isAuthenticated} from '../../../APICalls/auth'
 import VNav from '../../Navbar/verticalNav/vNav.component'
-import { css } from "@emotion/core";
+
 import {Link} from 'react-router-dom'
 import {Alert} from '@material-ui/lab'
-import {PropagateLoader} from "react-spinners";
+
 import Geocoder from 'react-mapbox-gl-geocoder'
 import ReactMapGL, {GeolocateControl} from 'react-map-gl'
 import Lottie from 'react-lottie'
 import animationData from '../../add/933-success.json'
 import './edit.scss'
+import {PropagateLoader} from "react-spinners";
+import { css } from "@emotion/core";
 const override = css`
     display: block;
     margin-left:50%;
@@ -64,7 +66,9 @@ const geolocateStyle = {
             latitude:null,
             showForm:true,
             showSuccessMessage:false,
-            isStopped:false
+            isStopped:false,
+            user:"",
+            token:""
         }
 
         this.preload = this.preload.bind(this)
@@ -89,7 +93,11 @@ const geolocateStyle = {
 
      componentDidMount(){
         this.preload()
-        
+        const jwt = JSON.parse(localStorage.getItem("jwt"))
+        this.setState({
+           user:jwt.user,
+           token:jwt.token
+         })
      }
 
      _next = () => {
@@ -289,6 +297,7 @@ const geolocateStyle = {
                                 handleChange={this.handleChange}
                                 phone={this.state.phone}
                                 photo={this.state.photo}
+                                user={this.state.user}
                             />
                             <Step3 
                                 currentStep={this.state.currentStep} 
@@ -416,6 +425,7 @@ function Step1(props) {
                     {user.name}
                 </option>
         </select>
+        <br/>
         <input
             onChange={props.handleChange("phone")}
             name="phone"
@@ -428,14 +438,14 @@ function Step1(props) {
             maxLength="10"
         />
         
-        <input
+        {/* <input
             onChange={props.handleChange("photo")}
             name="photo"
             accept="image"
             className="add-input" 
             type="file"
             placeholder="Choose an image (if any)"
-        />
+        /> */}
         <button
                 type="submit"
                 className="add-button"

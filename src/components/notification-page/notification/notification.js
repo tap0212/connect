@@ -9,7 +9,12 @@ import {Link} from 'react-router-dom'
 import './notification.styles.scss'
 import ReactMapboxGl, {  Marker } from "react-mapbox-gl";
 import { GeolocateControl } from 'react-map-gl';
-
+import {PropagateLoader} from "react-spinners";
+import { css } from "@emotion/core";
+const override = css`
+    display: block;
+    margin-left:50%;
+   `;
 const Map = ReactMapboxGl({
   accessToken:
     "pk.eyJ1IjoidGFwMDIxMiIsImEiOiJjangxbjNwa3IwYW9zNDlxZnAzdHNpZGxoIn0.7jVwdPa1rMpYPrDMkdz0Pg"
@@ -23,8 +28,8 @@ export default class  Notification extends React.Component {
             latitude:null,
             markers:[],
             eventList:[],
-            eventList5KM:[],
-            eventList10KM:[],
+            eventList5KM:null,
+            eventList10KM:null,
             locationList:[],
             distance5:true,
             distance10:false,
@@ -106,6 +111,12 @@ export default class  Notification extends React.Component {
                                     eventList10KM:[...this.state.eventList10KM, listEvent]
                                 })
                             }
+                            else{
+                                this.setState({
+                                    eventList5KM:"",
+                                    eventList10KM:""
+                                })
+                            }
                         }
                     })
                 })
@@ -119,77 +130,92 @@ export default class  Notification extends React.Component {
     }
 
     renderTile = () => {
-        if(this.state.distance5){
-            if(this.state.eventList5KM.length === 0){
-                return (
-                    <div>
-                         <h2>There are no Notifications around you wait for a few seconds</h2>
-                         <h2>Or try reloading and giving your exact location to the map</h2>
-                    </div>
-                 ) 
-            }
-            else{
-                return (
-                    
-                    this.state.eventList5KM.map(event => {
-                        return (
-                            <Grid item xl={4} lg={6} md={6} sm={12} xs={12}>
-                            <h2>Here's a list of Notifications in a radius of 5 Km.</h2>
-                                <Link 
-                                className="event-link"
-                                    to = {{
-                                        pathname:`/event/${event._id}`,
-                                        state: {
-                                            event:event
-                                        }
-                                    }}
-                                >
-                                    <Tile 
-                                     locationList={this.state.locationList} 
-                                     event={event}
-                                    />
-                                </Link>
-                            </Grid>
-                        )
-                    })
-                )
+        if(this.state.eventList5KM !== null){
+            if(this.state.distance5){
+                if(this.state.eventList5KM.length === 0){
+                    return (
+                        <div>
+                             <h2>There are no Notifications around you wait for a few seconds</h2>
+                             <h2>Or try reloading and giving your exact location to the map</h2>
+                        </div>
+                     ) 
+                }
+                else{
+                    return (
+                        
+                        this.state.eventList5KM.map(event => {
+                            return (
+                                <Grid item xl={4} lg={6} md={6} sm={12} xs={12}>
+                                <h2>Here's a list of Notifications in a radius of 5 Km.</h2>
+                                    <Link 
+                                    className="event-link"
+                                        to = {{
+                                            pathname:`/event/${event._id}`,
+                                            state: {
+                                                event:event
+                                            }
+                                        }}
+                                    >
+                                        <Tile 
+                                         locationList={this.state.locationList} 
+                                         event={event}
+                                        />
+                                    </Link>
+                                </Grid>
+                            )
+                        })
+                    )
+                }
             }
         }
 
-        if(this.state.distance10){
-            if(this.state.eventList10KM.length === 0){
-                return (
-                   <div>
-                        <h2>There are no Notifications around you</h2>
-                        <h2>Or try reloading and giving your exact location to the map</h2>
-                   </div>
-                ) 
+        if(this.state.eventList10KM !== null){
+            if(this.state.distance10){
+                if(this.state.eventList10KM.length === 0){
+                    return (
+                       <div>
+                            <h2>There are no Notifications around you</h2>
+                            <h2>Or try reloading and giving your exact location to the map</h2>
+                       </div>
+                    ) 
+                }
+                else{
+                    return (
+                        this.state.eventList10KM.map(event => {
+                           return ( 
+                            <Grid item xl={4} lg={6} md={6} sm={12} xs={12}>
+                            <h2>Here's a list of Notifications in a radius of 10 Km.</h2>
+                            <Link 
+                            className="event-link"
+                                to = {{
+                                    pathname:`/event/${event._id}`,
+                                    state: {
+                                        event:event
+                                    }
+                                }}
+                            >
+                                <Tile 
+                                 locationList={this.state.locationList} 
+                                 event={event}
+                                />
+                            </Link>
+                        </Grid>
+                           )
+                        })
+                    )
+                }
             }
-            else{
-                return (
-                    this.state.eventList10KM.map(event => {
-                       return ( 
-                        <Grid item xl={4} lg={6} md={6} sm={12} xs={12}>
-                        <h2>Here's a list of Notifications in a radius of 10 Km.</h2>
-                        <Link 
-                        className="event-link"
-                            to = {{
-                                pathname:`/event/${event._id}`,
-                                state: {
-                                    event:event
-                                }
-                            }}
-                        >
-                            <Tile 
-                             locationList={this.state.locationList} 
-                             event={event}
-                            />
-                        </Link>
-                    </Grid>
-                       )
-                    })
-                )
-            }
+        }
+
+        else{
+            
+                return <PropagateLoader
+                css={override}
+                size={40}
+                color={"#6C63FE"}
+                loading={this.state.loading}
+              />
+            
         }
     }
    

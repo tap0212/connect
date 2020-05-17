@@ -173,7 +173,7 @@ const geolocateStyle = {
             </button>        
           )
         }
-        return <h1>hello</h1>;
+        return ;
       }
 
 
@@ -438,14 +438,14 @@ function Step1(props) {
             maxLength="10"
         />
         
-        <input
+        {/* <input
             onChange={props.handleChange("photo")}
             name="photo"
             accept="image"
             className="add-input" 
             type="file"
             placeholder="Choose an image (if any)"
-        />
+        /> */}
         <button
                 type="submit"
                 className="add-button"
