@@ -144,7 +144,7 @@ export default class  Notification extends React.Component {
                         
                         this.state.eventList5KM.map(event => {
                             return (
-                                <Grid item xl={4} lg={6} md={6} sm={12} xs={12}>
+                                <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
                                     <Link 
                                     className="event-link"
                                         to = {{
@@ -181,7 +181,7 @@ export default class  Notification extends React.Component {
                     return (
                         this.state.eventList10KM.map(event => {
                            return ( 
-                            <Grid item xl={4} lg={6} md={6} sm={12} xs={12}>
+                            <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
                             <Link 
                             className="event-link"
                                 to = {{
