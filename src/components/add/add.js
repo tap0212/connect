@@ -54,7 +54,7 @@ const geolocateStyle = {
             viewport:{
                 latitude:20.5937,
                 longitude:78.9629,
-                zoom:4.5,
+                zoom:3.5,
                 height:"100%",
                 width:"100%"
             },

@@ -34,7 +34,7 @@ export default class  Notification extends React.Component {
             distance10:false,
             viewport:{
                 center:[78.9629, 20.5937],
-                zoom:[4.5],
+                zoom:[3],
                 height:"100%",
                 width:"100%"
             }
@@ -288,7 +288,7 @@ export default class  Notification extends React.Component {
                     </Grid>
                     <Grid  item xs={12} sm={6}>
                     <Map
-                        className="map"
+                         className="map"
                         style="mapbox://styles/mapbox/dark-v9"
                         {...this.state.viewport}
                         onViewportChange={viewport => this.setState({viewport})}>
