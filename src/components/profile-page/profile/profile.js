@@ -20,12 +20,19 @@ class Profile extends Component {
         super(props)
         this.state = {
             eventList:null,
-            deleting:false
+            deleting:false,
+            user:"", 
+            token:""
         }
     }
 
-    componentWillMount(){
-        getEvents().then(eventList => {
+   async  componentWillMount(){
+        const jwt = JSON.parse(localStorage.getItem("jwt"))
+      await  this.setState({
+           user:jwt.user,
+           token:jwt.token
+         })
+      await  getEvents().then(eventList => {
             eventList.map(event => {
                 if(event.person !== user._id){
                     this.setState({
