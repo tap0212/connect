@@ -197,7 +197,7 @@ const geolocateStyle = {
           
           this.setState({error:"", loading:true});
         
-          createEvent(user._id, token, this.state.formData).then(data => {
+          createEvent(this.state.user._id, this.state.token, this.state.formData).then(data => {
               console.log(data)
               if(data.error){
                   this.setState({ error:data.error, success:false})

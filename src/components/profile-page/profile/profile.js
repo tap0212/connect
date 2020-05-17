@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import VNav from '../../Navbar/verticalNav/vNav.component'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import {getEvents, deleteEvent} from '../../add/apicalls'
 import './profile.scss'
 import { isAuthenticated } from '../../../APICalls/auth'
@@ -60,7 +60,6 @@ class Profile extends Component {
                   deleting:false
               })
           }
-          
       }
     renderTile(){
         if(this.state.eventList === null){

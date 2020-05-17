@@ -52,7 +52,7 @@ function Login() {
 
     const performRedirect = () => {
         if(didRedirect){
-                return <Redirect to='/'></Redirect> 
+                return <Redirect to='/notification'></Redirect> 
         }
     }
 
