@@ -16,7 +16,8 @@ margin-left:50%;
   constructor(props){
     super(props)
     this.state = {
-      event:props.event
+      event:props.event,
+      index: props.index
     }
   }
 

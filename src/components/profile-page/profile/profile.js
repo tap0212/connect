@@ -97,9 +97,9 @@ class Profile extends Component {
         }else{
             return (
                 
-                this.state.eventList.map(event => {
+                this.state.eventList.map((event, index )=> {
                     return (<Grid className="events" item xs={12} sm={4} md={3}>
-                        <EventTile event={event} deleting={this.state.deleting} handleDeleteEvent={this.handleDeleteEvent}/>
+                        <EventTile index={index} event={event} deleting={this.state.deleting} handleDeleteEvent={this.handleDeleteEvent}/>
                     </Grid>)
                 })
             )
