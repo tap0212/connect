@@ -57,7 +57,7 @@ color: white;
 }
 
 .home-hero-text{
-  font-size: 3em;
+  font-size: 2.8em;
   margin-top: 10%;
   font-family: 'Montserrat', sans-serif;
   line-height: 150%;
@@ -69,14 +69,14 @@ color: white;
   text-align: center;
   font-weight: 200;
   margin-top: 5%;
-  font-size: 2.4em;
+  font-size: 2.2em;
   margin-top: 15%;
   font-family: 'Montserrat', sans-serif;
 }
 
 .how{
   font-family: 'Montserrat', sans-serif;
- font-size:2.2em ;
+ font-size:2em ;
  font-weight: 200; 
  letter-spacing: -3px;
  margin-top: 10%;
@@ -91,18 +91,18 @@ color: white;
 .hero-li{
   font-family: 'Montserrat', sans-serif;
   padding-left: 3%;
-  font-weight: 300;
+  font-weight: 500;
   list-style: none;
-  font-size: 1.2em;
+  font-size: 1em;
   margin-top: 5%;
-  line-height:90%;
+  line-height:110%;
 }
 
 
 
 @media screen and (min-width: 1400px) {
   .home-hero-text{
-    font-size: 2.5em;
+    font-size: 2.3em;
   }
   .homeSVG{
     margin-left: -24%;
@@ -118,7 +118,7 @@ color: white;
 
 @media screen and (min-width: 1900px) {
   .home-hero-text{
-    font-size: 3em;
+    font-size: 2.8em;
   }
   .homeSVG{
     margin-left: 2%;
@@ -126,13 +126,13 @@ color: white;
     width: 90%;
   }
   .grid-right-head{
-    font-size: 3.8em;
+    font-size: 3.5em;
   }
   .how{
-    font-size: 3em;
+    font-size: 2.8em;
   }
   .hero-li{
-    font-size: 1.2em;
+    font-size: 1em;
   }
   
 }
@@ -145,7 +145,7 @@ color: white;
 
   @media (min-width: 768px) and (max-width: 1024px) {
    .home-hero-text{
-     font-size: 1.6em;
+     font-size: 1.4em;
      margin-top: 20%;
    }
 
@@ -163,7 +163,7 @@ color: white;
   overflow:scroll;
 }
 .home-hero-text{
-  font-size: 2em;
+  font-size: 1.8em;
 }
 .homeSVG{
   width: 100%;
@@ -171,7 +171,7 @@ color: white;
   margin-left: 0;
 }
 .hero-li{
-  font-size: 1.4em;
+  font-size: 1.2em;
   padding-right: 10%;
   padding-left: 0;
 }
@@ -190,7 +190,7 @@ color: white;
     }
     .home-hero-text{
       padding: 2%;
-      font-size: 1.5em;
+      font-size: 1.3em;
     }
     .hero-li{
       padding-left:0%;
@@ -221,7 +221,7 @@ color: white;
     }
     .home-hero-text{
       padding: 2%;
-      font-size: 1.5em;
+      font-size: 1.3em;
     }
     .hero-li{
       padding-left:0%;
@@ -250,26 +250,27 @@ color: white;
   }
   .home-hero-text{
     padding: 2%;
-    font-size: 1.3em;
+    font-size: 1.1em;
   }
   .grid-right-top{
     height: 39vh;
   }
   .grid-right-head{
-    font-size: 2em;
+    font-size: 1.8em;
   }
   .grid-right-bottom{
     height: 40vh;
   }
   .how{
-    font-size: 1.8em;
+    font-size: 1.6em;
   }
   .hero-li{
-    font-size: 1.2em;
-  }
-  .hero-li{
+    font-size: 1em;
     padding-left: 1%;
+
   }
+
+
   .homeSVG{
     margin-left: 0%;
     height: 36vh;

@@ -40,12 +40,13 @@
   .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
   }
   .tooltip .tooltiptext {
+    font-size: 12px;
+    font-family: "Poppins", sans-serif;
     visibility: hidden;
     width: 120px;
-    background-color: #5584b1;
+    background-color: #1e1e30;
     color: white;
     text-align: center;
     border-radius: 6px;

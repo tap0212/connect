@@ -134,8 +134,8 @@ export default class  Notification extends React.Component {
                 if(this.state.eventList5KM.length === 0){
                     return (
                         <div class="error">
-                             <h2 style={{paddingLeft:"4%"}}>There are no Notifications around you</h2>
-                            <h2 style={{paddingLeft:"4%"}}>Have you agreed to the location permission of the browser?</h2>
+                             <h3 style={{paddingLeft:"4%"}}>There are no Notifications around you</h3>
+                            <h3 style={{paddingLeft:"4%"}}>Have you agreed to the location permission of the browser?</h3>
                         </div>
                      ) 
                 }
@@ -172,8 +172,8 @@ export default class  Notification extends React.Component {
                 if(this.state.eventList10KM.length === 0){
                     return (
                        <div>
-                            <h2 style={{paddingLeft:"4%"}}>There are no Notifications around you</h2>
-                            <h2 style={{paddingLeft:"4%"}}>Or try reloading and giving your exact location to the map</h2>
+                            <h3 style={{paddingLeft:"4%"}}>There are no Notifications around you</h3>
+                            <h3 style={{paddingLeft:"4%"}}>Or try reloading and giving your exact location to the map</h3>
                        </div>
                     ) 
                 }
@@ -218,10 +218,10 @@ export default class  Notification extends React.Component {
 
     renderDistanceText = () => {
         if(this.state.distance5){
-            return  <h2 style={{paddingLeft:"4%"}}>Here's a list of Notifications in a radius of 5 Km.</h2>
+            return  <h3 style={{paddingLeft:"4%"}}>Here's a list of Notifications in a radius of 5 Km.</h3>
         }
         else{
-            return <h2 style={{paddingLeft:"4%"}}>Here's a list of Notifications in a radius of 10 Km.</h2>
+            return <h3 style={{paddingLeft:"4%"}}>Here's a list of Notifications in a radius of 10 Km.</h3>
         }
     }
    
@@ -232,7 +232,7 @@ export default class  Notification extends React.Component {
             <div className="home-content-container">
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
-                        <h1>Notifications Around You</h1>
+                        <h2>Notifications Around You</h2>
                         <div className="filter">
                             <ToggleButton
                                 value="check"
