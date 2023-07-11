@@ -13,7 +13,7 @@
     "google-maps-react": "^2.0.6",
     "leaflet": "^1.6.0",
     "material-ui-icons": "^1.0.0-beta.36",
-    "node-sass": "^4.14.1",
+    "node-sass": "^9.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-bingmaps": "^3.6.1",
@@ -26,7 +26,7 @@
     "react-mapbox-gl": "^4.8.3",
     "react-mapbox-gl-geocoder": "^1.1.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "react-scrollbar": "^0.5.6",
     "react-spinners": "^0.8.3",
     "reactjs-popup": "^1.5.0"
